@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eya Azzabi — AI &amp; Data Engineer</title>
+<meta name="description" content="AI &amp; Data Engineering student at ESPRIT. LLM agents, privacy-preserving machine learning, computer vision. Available from January 2027 for a 6-month final-year engineering internship. Open to relocation in Europe and Canada.">
+<meta property="og:title" content="Eya Azzabi — AI &amp; Data Engineer">
+<meta property="og:description" content="Engineer by training, mathematician by instinct. I build AI systems that reach real users and want to know why they work.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#D6D3C7; --cream-2:#E0DDD2; --card:#EFEDE4; --white:#fff;
+  --sage:#87A05E; --sage-d:#647B44; --sage-l:#B3C495; --sage-w:rgba(135,160,94,.13);
+  --ink:#232320; --ink-2:#56564E; --ink-3:#8C8C81;
+  --line:#C9C5B7; --line-2:#B6B2A2;
+  --teal:#2E7D8C; --rust:#C1703C;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --disp:'Anton',Impact,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font:400 16px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{width:min(1140px,92vw);margin-inline:auto}
+.mono{font-family:var(--mono);font-size:.79rem;letter-spacing:.03em}
+.disp{font-family:var(--disp);font-weight:400;letter-spacing:.01em;line-height:.94;text-transform:uppercase}
+
+/* pill */
+.pill{display:inline-flex;align-items:center;gap:0;border-radius:99px;overflow:visible}
+.pill b{background:var(--sage);color:#fff;font-weight:500;font-size:.83rem;letter-spacing:.05em;padding:9px 20px;border-radius:99px}
+.pill i{width:34px;height:34px;border-radius:50%;background:var(--sage);display:grid;place-items:center;margin-left:7px;color:#fff;font-style:normal;font-size:.9rem}
+
+/* nav */
+nav{position:fixed;inset:0 0 auto;z-index:60;background:rgba(214,211,199,.9);backdrop-filter:blur(12px);transition:box-shadow .3s}
+nav.stuck{box-shadow:0 1px 0 var(--line),0 6px 24px rgba(60,58,45,.07)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
+nav .logo{font-family:var(--disp);font-size:1.15rem;letter-spacing:.04em}
+nav .logo span{color:var(--sage)}
+nav ul{display:flex;gap:26px;list-style:none}
+nav ul a{font-size:.9rem;color:var(--ink-2);transition:color .2s;position:relative}
+nav ul a::after{content:'';position:absolute;left:0;right:100%;bottom:-4px;height:2px;background:var(--sage);transition:right .25s}
+nav ul a:hover{color:var(--ink)}
+nav ul a:hover::after{right:0}
+.burger{display:none;background:none;border:0;font-size:1.4rem;cursor:pointer;color:var(--ink)}
+@media(max-width:880px){
+  nav ul{position:fixed;inset:66px 0 auto;flex-direction:column;gap:0;background:var(--cream-2);max-height:0;overflow:hidden;transition:max-height .35s;box-shadow:0 10px 22px rgba(60,58,45,.09)}
+  nav ul.open{max-height:360px}
+  nav ul li+li{border-top:1px solid var(--line)}
+  nav ul a{display:block;padding:15px 4vw}
+  .burger{display:block}
+}
+
+/* dashed decoration */
+.dash{position:absolute;pointer-events:none;z-index:0}
+.dash path{fill:none;stroke:var(--sage);stroke-width:4.5;stroke-dasharray:15 19;stroke-linecap:round;opacity:.85}
+.dash circle{fill:var(--sage)}
+.dash.pale path{opacity:.45}
+section>.wrap{position:relative;z-index:2}
+.draw path{stroke-dasharray:15 19;stroke-dashoffset:0}
+/* collage */
+.collage{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:38px}
+.collage figure{border-radius:18px;overflow:hidden;background:var(--card);border:1px solid var(--line)}
+.collage img{width:100%;height:100%;object-fit:cover;display:block}
+.c-a{grid-column:span 4;aspect-ratio:16/9}
+.c-b{grid-column:span 2;aspect-ratio:1}
+.c-c{grid-column:span 2;aspect-ratio:1}
+.c-d{grid-column:span 4;aspect-ratio:16/9}
+@media(max-width:820px){.collage{grid-template-columns:repeat(2,1fr)}.c-a,.c-b,.c-c,.c-d{grid-column:span 1;aspect-ratio:4/3}}
+.chip{display:inline-flex;align-items:center;background:var(--sage);color:#fff;border-radius:99px;padding:7px 8px 7px 20px;font-size:.84rem;font-weight:500;letter-spacing:.03em;gap:14px}
+.chip::after{content:'';width:22px;height:22px;border-radius:50%;background:#fff}
+.chiprow{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+/* certifications */
+.certgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:16px;margin-top:44px}
+.cert{position:relative;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;overflow:hidden;transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s,border-color .3s}
+.cert:hover{transform:translateY(-6px);border-color:var(--sage);box-shadow:0 18px 34px rgba(60,58,45,.13)}
+.cert::before{content:'';position:absolute;inset:auto auto 0 0;height:4px;width:0;background:var(--sage);transition:width .45s cubic-bezier(.2,.8,.2,1)}
+.cert:hover::before{width:100%}
+.cert .issuer{display:inline-flex;align-items:center;font-family:var(--mono);font-size:.7rem;letter-spacing:.11em;text-transform:uppercase;color:#fff;background:var(--iss,#647B44);padding:5px 11px;border-radius:99px;margin-bottom:14px}
+.cert h3{font-size:1.02rem;font-weight:700;line-height:1.32;margin-bottom:8px}
+.cert .when{font-family:var(--mono);font-size:.74rem;color:var(--ink-3)}
+.cert .topics{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.cert .topics span{font-size:.7rem;padding:3px 9px;border-radius:99px;background:var(--sage-w);color:var(--sage-d);border:1px solid var(--sage-l)}
+.certcount{font-family:var(--mono);font-size:.75rem;color:var(--ink-3);margin-top:22px}
+.cert .cid{font-family:var(--mono);font-size:.66rem;color:var(--ink-3);margin-top:12px;word-break:break-all;opacity:.75}
+.cert .verify{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:.8rem;font-weight:600;color:var(--sage-d);border-bottom:1.5px solid transparent;transition:border-color .2s}
+.cert .verify:hover{border-color:var(--sage-d)}
+.cert .thumb{margin-top:14px;border:1px solid var(--line);border-radius:10px;overflow:hidden;cursor:zoom-in;background:#fff;transition:transform .25s,box-shadow .25s}
+.cert .thumb:hover{transform:scale(1.02);box-shadow:0 8px 18px rgba(60,58,45,.14)}
+.cert .thumb img{width:100%;height:104px;object-fit:cover;object-position:top}
+.lb{position:fixed;inset:0;z-index:200;background:rgba(24,24,21,.9);display:grid;place-items:center;padding:5vh 4vw;opacity:0;pointer-events:none;transition:opacity .25s;backdrop-filter:blur(3px)}
+.lb.on{opacity:1;pointer-events:auto}
+.lb img{max-width:100%;max-height:90vh;border-radius:12px;background:#fff;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.lb .x{position:absolute;top:22px;right:26px;width:42px;height:42px;border-radius:50%;background:var(--sage);color:#fff;border:0;font-size:1.3rem;cursor:pointer;display:grid;place-items:center}
+
+/* hero */
+header{position:relative;padding:118px 0 72px;overflow:hidden}
+.hero{position:relative;z-index:2;display:grid;grid-template-columns:1.25fr .75fr;gap:56px;align-items:center}
+@media(max-width:900px){.hero{grid-template-columns:1fr;gap:40px}}
+h1.name{font-family:var(--disp);font-size:clamp(3.8rem,12vw,8.6rem);line-height:.86;text-transform:uppercase;letter-spacing:.004em}
+.role{font-family:var(--disp);font-size:clamp(1.1rem,2.6vw,1.7rem);color:var(--sage-d);text-transform:uppercase;letter-spacing:.03em;margin-top:10px}
+.lede{margin-top:24px;font-size:clamp(1.02rem,1.8vw,1.18rem);color:var(--ink-2);max-width:52ch}
+.lede b{color:var(--ink);font-weight:600}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 24px;border-radius:99px;font-size:.93rem;font-weight:500;border:1.5px solid var(--ink);transition:transform .2s,background .2s,color .2s,border-color .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.pri{background:var(--sage);border-color:var(--sage);color:#fff}
+.btn.pri:hover{background:var(--sage-d);border-color:var(--sage-d)}
+.btn.sec:hover{background:var(--ink);color:var(--cream)}
+.avatar{position:relative;justify-self:center;width:min(300px,66vw);aspect-ratio:1}
+.avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%;border:4px solid var(--sage);background:var(--card)}
+.avatar::after{content:'';position:absolute;inset:-16px;border-radius:50%;border:2px dashed var(--sage-l);opacity:.75;animation:spin 46s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* sections */
+section{padding:96px 0;position:relative;overflow:hidden}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.74rem;letter-spacing:.17em;text-transform:uppercase;color:var(--sage-d);margin-bottom:14px}
+.eyebrow::before{content:'';width:24px;height:2px;background:var(--sage);border-radius:2px}
+h2{font-family:var(--disp);font-size:clamp(2.7rem,7.4vw,5.2rem);text-transform:uppercase;line-height:.88;letter-spacing:.005em}
+.sub{color:var(--ink-2);margin-top:15px;max-width:65ch}
+
+/* glance */
+.glance{background:var(--sage);color:#fff;padding:0}
+.glance .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+@media(max-width:860px){.glance .wrap{grid-template-columns:repeat(2,1fr)}}
+.gi{padding:28px 24px 28px 0}
+.gi+.gi{border-left:1px solid rgba(255,255,255,.25);padding-left:24px}
+@media(max-width:860px){.gi:nth-child(3){border-left:0;padding-left:0}.gi:nth-child(n+3){border-top:1px solid rgba(255,255,255,.25)}}
+.gi dt{font-family:var(--mono);font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;opacity:.82;margin-bottom:7px}
+.gi dd{font-size:.96rem;line-height:1.45}
+.gi dd b{font-weight:700;display:block}
+
+/* metrics */
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:42px}
+@media(max-width:820px){.metrics{grid-template-columns:1fr}}
+.metric{background:var(--card);border-radius:18px;padding:26px 22px;border:1px solid var(--line);transition:transform .28s,box-shadow .28s}
+.metric:hover{transform:translateY(-4px);box-shadow:0 12px 26px rgba(60,58,45,.09)}
+.metric .n{font-family:var(--disp);font-size:clamp(1.9rem,4vw,2.6rem);color:var(--sage-d);line-height:1}
+.metric .l{font-size:.87rem;color:var(--ink-2);margin-top:9px;line-height:1.45}
+
+/* cards */
+.rgrid{display:grid;gap:18px;margin-top:38px}
+.rcard{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:34px;transition:transform .3s,box-shadow .3s}
+.rcard:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(60,58,45,.1)}
+.rhead{display:flex;flex-wrap:wrap;align-items:center;gap:11px;margin-bottom:7px}
+.rcard h3{font-size:1.3rem;font-weight:700;letter-spacing:-.01em}
+.badge{font-family:var(--mono);font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;padding:5px 12px;border-radius:99px;background:var(--sage-w);color:var(--sage-d);border:1px solid var(--sage-l)}
+.badge.live{background:#e4f0e2;color:#3f7a3a;border-color:#a9cca4}
+.meta{font-family:var(--mono);font-size:.75rem;color:var(--ink-3);margin-bottom:15px}
+.rcard p{color:var(--ink-2);font-size:.97rem}
+.rcard p+p{margin-top:12px}
+.rcard strong{color:var(--ink);font-weight:600}
+.find{margin-top:19px;padding:16px 20px;background:var(--sage-w);border-left:3px solid var(--sage);border-radius:0 14px 14px 0;font-size:.95rem;color:var(--ink-2)}
+.find b{color:var(--sage-d);font-weight:700}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:19px}
+.tag{font-family:var(--mono);font-size:.71rem;padding:5px 11px;border-radius:99px;background:var(--cream-2);color:var(--ink-2);border:1px solid var(--line)}
+.links{display:flex;flex-wrap:wrap;gap:20px;margin-top:19px}
+.links a{font-size:.89rem;font-weight:600;color:var(--sage-d);display:inline-flex;align-items:center;gap:7px;transition:gap .2s}
+.links a:hover{gap:12px}
+
+/* pca */
+.viz{margin-top:22px;background:var(--white);border:1px solid var(--line);border-radius:16px;padding:20px}
+.vizhead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;margin-bottom:4px}
+.legend{display:flex;gap:16px;font-family:var(--mono);font-size:.73rem;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:10px;height:10px;border-radius:50%}
+#pca{width:100%;height:auto;display:block;touch-action:none}
+#pca .pt{cursor:pointer;transition:r .18s}
+#pca .pt:hover{r:8.5}
+#pca text{font-family:'JetBrains Mono',monospace;font-size:8.5px;fill:#6f6f66}
+#pca .ax{stroke:#D3CFC1;stroke-width:1.2}
+#pca .axlab{font-size:8px;fill:#8C8C81}
+.tip{position:absolute;pointer-events:none;opacity:0;transform:translate(-50%,-136%);background:var(--ink);color:var(--cream);border-radius:10px;padding:9px 13px;font-size:.79rem;white-space:nowrap;transition:opacity .15s;z-index:5;box-shadow:0 8px 22px rgba(0,0,0,.22)}
+.tip b{color:var(--sage-l)}
+.tip .m{font-family:var(--mono);font-size:.71rem;opacity:.8;display:block;margin-top:3px}
+
+/* projects */
+.filters{display:flex;flex-wrap:wrap;gap:9px;margin:32px 0 24px}
+.fbtn{font-family:var(--mono);font-size:.78rem;padding:8px 17px;border-radius:99px;border:1.5px solid var(--line-2);background:transparent;color:var(--ink-2);cursor:pointer;transition:all .2s}
+.fbtn:hover{border-color:var(--sage);color:var(--ink)}
+.fbtn.on{background:var(--sage);border-color:var(--sage);color:#fff}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s}
+.pcard:hover{transform:translateY(-5px);box-shadow:0 16px 32px rgba(60,58,45,.11)}
+.pcard.hide{display:none}
+.shot{aspect-ratio:16/9;overflow:hidden;background:var(--cream-2);border-bottom:1px solid var(--line)}
+.shot img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .55s}
+.pcard:hover .shot img{transform:scale(1.05)}
+.emo{display:grid;place-items:center;font-size:3.3rem}
+.pbody{padding:22px;display:flex;flex-direction:column;flex:1}
+.pcard h3{font-size:1.07rem;font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pcard p{font-size:.9rem;color:var(--ink-2);flex:1}
+.kpi{font-family:var(--mono);font-size:.79rem;color:var(--rust);margin-top:12px;font-weight:500}
+
+/* video */
+.vidwrap{position:relative;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#000;margin-top:20px}
+.vidwrap video{width:100%;display:block}
+.vidwrap .poster{position:absolute;inset:0;background-size:cover;background-position:center;display:grid;place-items:center;cursor:pointer;transition:opacity .35s}
+.shot img.team{object-position:center}
+.figrow{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+@media(max-width:760px){.figrow{grid-template-columns:1fr}}
+.fig{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.fig img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:center}
+.fig figcaption{padding:12px 16px;font-size:.85rem;color:var(--ink-2)}
+.story .fig{background:#2E2E29;border-color:#3B3B34}
+.story .fig figcaption{color:#B9B7AC}
+.vidwrap .poster::after{content:'';position:absolute;inset:0;background:rgba(35,35,32,.42)}
+.play{position:relative;z-index:2;width:68px;height:68px;border-radius:50%;background:var(--sage);display:grid;place-items:center;box-shadow:0 0 0 0 rgba(135,160,94,.5);animation:pulse 2.6s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 20px rgba(135,160,94,0)}100%{box-shadow:0 0 0 0 rgba(135,160,94,0)}}
+.vidwrap.playing .poster{opacity:0;pointer-events:none}
+
+/* story */
+.story{background:var(--ink);color:var(--cream);position:relative;overflow:hidden}
+.story h2{color:var(--cream)}
+.story .eyebrow{color:var(--sage-l)}
+.story .eyebrow::before{background:var(--sage-l)}
+.story .sub{color:#B9B7AC}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:44px}
+@media(max-width:880px){.twocol{grid-template-columns:1fr}}
+.stack{display:flex;flex-direction:column;gap:12px}
+.slip{background:#2E2E29;border:1px solid #3B3B34;border-radius:13px;padding:16px 19px;font-size:.9rem;color:#B9B7AC;position:relative}
+.slip.no{border-left:3px solid #A85A4A}
+.slip.yes{border-left:3px solid var(--sage);background:#2B3327}
+.slip .k{font-family:var(--mono);font-size:.68rem;letter-spacing:.11em;text-transform:uppercase;color:#7E7E73;display:block;margin-bottom:6px}
+.slip.yes .k{color:var(--sage-l)}
+.slip em{font-style:normal;color:#E4E1D6}
+.turn{margin-top:40px;padding:30px 34px;background:#2B3327;border:1px solid #3E4A36;border-radius:20px;font-size:1.06rem;line-height:1.7;color:#E4E1D6}
+.turn b{color:var(--sage-l);font-weight:700}
+.colhead{font-family:var(--mono);font-size:.74rem;letter-spacing:.15em;text-transform:uppercase;color:#7E7E73;margin-bottom:6px}
+.embed{max-width:620px;border-radius:16px;overflow:hidden;border:1px solid #3B3B34;background:#2E2E29}
+.embed iframe{width:100%;height:640px;display:block;border:0}
+@media(max-width:600px){.embed iframe{height:560px}}
+
+/* timeline */
+.tl{margin-top:46px;position:relative;padding-left:32px}
+.tl::before{content:'';position:absolute;left:7px;top:10px;bottom:10px;width:2px;background:linear-gradient(var(--sage),var(--line) 70%,transparent);border-radius:2px}
+.ev{position:relative;padding-bottom:34px}
+.ev::before{content:'';position:absolute;left:-31px;top:6px;width:16px;height:16px;border-radius:50%;background:var(--cream);border:3px solid var(--line-2)}
+.ev.now::before{border-color:var(--sage);background:var(--sage)}
+.ev .when{font-family:var(--mono);font-size:.76rem;color:var(--sage-d);font-weight:500;margin-bottom:4px}
+.ev h3{font-size:1.09rem;font-weight:700}
+.ev .where{color:var(--ink-3);font-size:.88rem;margin-bottom:8px}
+.ev p{color:var(--ink-2);font-size:.93rem}
+
+/* skills */
+.sgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:16px;margin-top:36px}
+.sgroup{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px}
+.sgroup h3{font-family:var(--mono);font-size:.76rem;letter-spacing:.13em;text-transform:uppercase;color:var(--sage-d);margin-bottom:17px}
+.skill{margin-bottom:14px}
+.skill:last-child{margin-bottom:0}
+.srow{display:flex;justify-content:space-between;font-size:.89rem;margin-bottom:6px}
+.srow span:last-child{font-family:var(--mono);font-size:.71rem;color:var(--ink-3)}
+.bar{height:6px;background:var(--cream-2);border-radius:99px;overflow:hidden;border:1px solid var(--line)}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--sage-l),var(--sage));width:0;transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
+
+/* beyond */
+.bgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(265px,1fr));gap:16px;margin-top:32px}
+.bcard{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;transition:transform .3s,box-shadow .3s}
+.bcard:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(60,58,45,.1)}
+.bcard .ico{width:44px;height:44px;border-radius:50%;background:var(--sage-w);display:grid;place-items:center;font-size:1.3rem;margin-bottom:14px}
+.bcard h3{font-size:1.03rem;font-weight:700;margin-bottom:4px}
+.bcard .role{font-family:var(--mono);font-size:.73rem;color:var(--sage-d);margin-bottom:9px}
+.bcard p{font-size:.9rem;color:var(--ink-2)}
+
+/* contact */
+.contact{background:var(--cream-2);border-top:1px solid var(--line)}
+.cinner{display:grid;grid-template-columns:1.15fr 1fr;gap:52px;align-items:start}
+@media(max-width:900px){.cinner{grid-template-columns:1fr;gap:32px}}
+.clinks{display:flex;flex-direction:column;gap:11px}
+.clink{display:flex;align-items:center;gap:14px;padding:16px 20px;background:var(--card);border:1px solid var(--line);border-radius:15px;transition:all .22s}
+.clink:hover{border-color:var(--sage);transform:translateX(5px);box-shadow:0 8px 20px rgba(60,58,45,.08)}
+.clink .k{font-family:var(--mono);font-size:.69rem;color:var(--ink-3);text-transform:uppercase;letter-spacing:.1em}
+.clink .v{font-size:.94rem;font-weight:500}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--ink-3);font-size:.84rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap">
+    <a href="#top" class="logo">EYA<span>.</span>AZZABI</a>
+    <button class="burger" aria-label="Menu" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
+    <ul id="menu">
+      <li><a href="#projects">Work</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#story">My story</a></li>
+      <li><a href="#experience">Path</a></li>
+      <li><a href="#certs">Certificates</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header id="top">
+  <svg class="dash" style="top:6%;left:-4%;width:46%" viewBox="0 0 460 220" aria-hidden="true">
+    <path d="M4 84C64 6 152 4 208 74s118 96 178 30"/><circle cx="392" cy="99" r="9"/>
+  </svg>
+  <svg class="dash" style="bottom:-4%;right:-3%;width:52%" viewBox="0 0 520 200" aria-hidden="true">
+    <path d="M8 116c78 62 150 34 214-32s142-72 210 6"/><circle cx="12" cy="118" r="9"/>
+  </svg>
+
+  <div class="wrap hero">
+    <div>
+      <div class="pill" style="margin-bottom:26px"><b>Available January 2027 · Europe &amp; Canada</b><i>↗</i></div>
+      <h1 class="name">Eya<br>Azzabi</h1>
+      <div class="role">AI &amp; Data Engineer</div>
+      <p class="lede">
+        Engineer by training, mathematician by instinct. I build <b>AI systems that reach real users</b>
+        — LLM agents and RAG, data pipelines that run every day, and models I can tell you the error bars on.
+        Most of what I build ships; all of it gets measured.
+      </p>
+      <div class="chiprow">
+        <span class="chip">LLM AGENTS</span><span class="chip">RAG</span><span class="chip">DATA</span><span class="chip">MATHS</span>
+      </div>
+      <div class="cta">
+        <a class="btn pri" href="#projects">See what I have built →</a>
+        <a class="btn sec" href="assets/Eya-Azzabi-CV.pdf" download>Download CV</a>
+      </div>
+    </div>
+    <div class="avatar"><img src="assets/eya.jpg" alt="Eya Azzabi" width="600" height="600"></div>
+  </div>
+</header>
+
+<section class="glance" style="padding:0">
+  <div class="wrap">
+    <dl class="gi"><dt>Studying</dt><dd><b>Engineering, Data Science</b>ESPRIT · graduating Oct 2027</dd></dl>
+    <dl class="gi"><dt>Also completing</dt><dd><b>MSc Data Science</b>Univ. Carthage · first in cohort</dd></dl>
+    <dl class="gi"><dt>Working as</dt><dd><b>AI &amp; Backend Developer</b>Mafrah · since 2025</dd></dl>
+    <dl class="gi"><dt>Available</dt><dd><b>From January 2027</b>6-month internship · Europe or Canada</dd></dl>
+  </div>
+</section>
+
+<section id="projects" style="background:var(--cream-2);border-block:1px solid var(--line)">
+  <svg class="dash pale" style="bottom:-10%;left:-8%;width:58%" viewBox="0 0 580 250" aria-hidden="true"><path d="M10 190C96 74 214 62 308 138s182 62 262-60"/><circle cx="570" cy="80" r="12"/></svg>
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">Selected work</div>
+      <h2>Things I have built</h2>
+      <p class="sub">A recruitment platform serving nearly ten thousand players, a retrieval harness that measures what most teams guess at, and a pipeline that has ingested data every morning since the day it was written. Agentic systems, assistive technology and applied machine learning — most of it shipped, all of it measured.</p>
+    </div>
+
+    <div class="filters rv">
+      <button class="fbtn on" data-f="all">All</button>
+      <button class="fbtn" data-f="agents">LLM &amp; Agents</button>
+      <button class="fbtn" data-f="cv">Computer vision</button>
+      <button class="fbtn" data-f="ml">Machine learning</button>
+      <button class="fbtn" data-f="data">Data engineering</button>
+    </div>
+
+    <div class="pgrid">
+      <article class="pcard rv" data-t="agents ml">
+        <div class="shot"><img src="assets/scoutable-dashboard.jpg" alt="The Scoutable dashboard: an opportunity board ranking players by the gap between market value and modelled fair value" loading="lazy"></div>
+        <div class="pbody">
+          <h3>Scoutable <span class="badge live">Live</span></h3>
+          <div class="meta">OPTO Lab internship · summer 2026 · shipped platform</div>
+          <p>An AI decision-support system for football recruitment, covering 9,977 players across 17 under-scouted leagues. Player-DNA vector embeddings in pgvector, an XGBoost model that prices what a player <em>should</em> cost, a ranking model that blends fit, quality and value, and a grounded RAG assistant that routes questions across seven retrieval tools and cites every player by id.</p>
+          <div class="kpi">9,977 players · 3,163 under-priced flagged · quality lift +0.172</div>
+          <div class="links"><a href="https://eyaazzabi.github.io/scoutable/" target="_blank" rel="noopener">See the project page →</a></div>
+        </div>
+      </article>
+
+      <article class="pcard rv" data-t="agents">
+        <div class="shot"><img src="assets/rageval-chunking.png" alt="Chart showing dense retrieval improving and BM25 degrading as chunks get finer, with the two curves crossing" loading="lazy"></div>
+        <div class="pbody">
+          <h3>rag-eval-lab</h3>
+          <div class="meta">Retrieval evaluation harness · open source</div>
+          <p>Everyone building with LLMs has a RAG demo; few can state their retrieval recall. This measures it — BM25, dense vectors and rank fusion across three chunking strategies, scored on recall@k, MRR and nDCG against human relevance judgments, with serving cost reported beside every quality number. The finding: finer chunks help dense retrieval and <em>hurt</em> BM25, and the two cross.</p>
+          <div class="kpi">nDCG@10 0.693 hybrid · 9 configurations · 25 tests</div>
+          <div class="links"><a href="https://github.com/EyaAzzabi/rag-eval-lab" target="_blank" rel="noopener">View repository →</a></div>
+        </div>
+      </article>
+
+      <article class="pcard rv" data-t="data">
+        <div class="shot"><img src="assets/climate-diurnal.png" alt="Diurnal temperature range by city, separating coastal from inland climates" loading="lazy"></div>
+        <div class="pbody">
+          <h3>daily-climate-pipeline <span class="badge live">Runs daily</span></h3>
+          <div class="meta">Data engineering · scheduled on GitHub Actions</div>
+          <p>A pipeline built around the problems that only appear on the <em>second</em> run: what happens when the same day is ingested twice, when one source of ten fails, when the API starts returning nulls — and how you would find out. Fourteen quality checks run before the load, so a blocking failure leaves the warehouse untouched.</p>
+          <div class="kpi">Idempotent loads · DuckDB · 28 tests · ingests every morning</div>
+          <div class="links"><a href="https://github.com/EyaAzzabi/daily-climate-pipeline" target="_blank" rel="noopener">View repository →</a></div>
+        </div>
+      </article>
+
+      <article class="pcard rv" data-t="agents ml">
+        <div class="shot"><img src="assets/qosbuddy-sla.jpg" alt="QoS Buddy SLA compliance dashboard" loading="lazy"></div>
+        <div class="pbody">
+          <h3>QoS Buddy <span class="badge live">Live</span></h3>
+          <div class="meta">ESPRIT integrated project · team of 6</div>
+          <p>A multi-agent diagnostic platform for telecom operators. Four autonomous agents work the network in parallel: latency and SLA-breach prediction, trend and anomaly detection, congestion and capacity analysis, and external context enrichment.</p>
+          <div class="kpi">Random Forest · R² = 0.941</div>
+          <div class="links"><a href="https://qos-buddy.vercel.app" target="_blank" rel="noopener">Open the live demo →</a></div>
+        </div>
+      </article>
+
+      <article class="pcard rv" data-t="cv ml">
+        <div class="shot"><img src="assets/archiguide-plans.jpg" alt="ArchiGuide plan library" loading="lazy"></div>
+        <div class="pbody">
+          <h3>ArchiGuide</h3>
+          <div class="meta">Deep learning project · 2026</div>
+          <p>An AI assistant for architectural workflows. Floor-plan understanding and caption generation with dual-encoder CNNs, cross-attention and a transformer decoder; Phi-3 Mini fine-tuned with LoRA to extract requirements from client briefs; multimodal visual question answering.</p>
+          <div class="kpi">LoRA · Phi-3 Mini · cross-modal attention</div>
+        </div>
+      </article>
+
+      <article class="pcard rv" data-t="cv ml">
+        <div class="shot"><img src="assets/art-sensemate.svg" alt="Real-time object detection with radiating sensing waves" loading="lazy"></div>
+        <div class="pbody">
+          <h3>SenseMate <span class="badge">Award</span></h3>
+          <div class="meta">Enactus FSB · project developer · 15 months</div>
+          <p>An AI-powered device assisting visually impaired people, using real-time object detection and identification with YOLO. Built as a social-entrepreneurship project with a student team.</p>
+          <div class="kpi">Early Stage award · Enactus National Exposition 2024</div>
+        </div>
+      </article>
+
+      <article class="pcard rv" data-t="ml">
+        <div class="shot"><img src="assets/art-pcos.svg" alt="ROC curves comparing six classifiers" loading="lazy"></div>
+        <div class="pbody">
+          <h3>PCOS prediction</h3>
+          <div class="meta">Clinical machine learning · women's health</div>
+          <p>Early detection of polycystic ovary syndrome from clinical and hormonal features. Six models compared from logistic regression through to XGBoost, SMOTE for class imbalance, evaluated on ROC/AUC and F1.</p>
+          <div class="kpi">XGBoost best · SMOTE · ROC/AUC</div>
+          <div class="links"><a href="https://github.com/EyaAzzabi/Pcos_Prediction" target="_blank" rel="noopener">View repository →</a></div>
+        </div>
+      </article>
+
+      <article class="pcard rv" data-t="agents">
+        <div class="shot"><img src="assets/art-connectis.svg" alt="Agent pipeline routing leads through scoring to outreach" loading="lazy"></div>
+        <div class="pbody">
+          <h3>Connect'IS</h3>
+          <div class="meta">Talan Tunisie · Summer Camp 2025 · AI consultant intern</div>
+          <p>Built during the Talan Summer Camp: an AI-driven sales platform that automates repetitive tasks, prioritises leads, and generates tailored reports and outreach emails. I implemented the intelligent agents that draw on internal and external data to optimise sales workflows and improve forecasting, and worked on the front end.</p>
+          <div class="kpi">Task-oriented LLM agents · TypeScript front end</div>
+        </div>
+      </article>
+
+
+
+    </div>
+
+    <div class="rv" style="margin-top:44px">
+      <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:5px">QoS Buddy in action</h3>
+      <p class="sub" style="margin-top:0">Four agents monitoring a telecom network, with executive and technical views.</p>
+      <div class="vidwrap" id="vw">
+        <video id="vid" preload="none" playsinline controls poster="assets/qosbuddy-sla.jpg">
+          <source src="assets/qosbuddy-demo.mp4" type="video/mp4">
+        </video>
+        <div class="poster" style="background-image:url(assets/qosbuddy-sla.jpg)" onclick="const v=document.getElementById('vid');document.getElementById('vw').classList.add('playing');v.play()">
+          <div class="play"><svg width="22" height="24" viewBox="0 0 22 24" fill="#fff"><path d="M0 0l22 12L0 24z"/></svg></div>
+        </div>
+      </div>
+      <div class="figrow">
+        <figure class="fig">
+          <img src="assets/qosbuddy-home.jpg" alt="QoS Buddy landing view" loading="lazy">
+          <figcaption>QoS Buddy: four autonomous agents, executive and technical views.</figcaption>
+        </figure>
+        <figure class="fig">
+          <img src="assets/archiguide-brief.jpg" alt="ArchiGuide brief analysis interface" loading="lazy">
+          <figcaption>ArchiGuide analysing a client brief with a fine-tuned Phi-3 Mini.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="research">
+  <svg class="dash" style="top:-6%;right:-6%;width:56%" viewBox="0 0 560 260" aria-hidden="true"><path d="M6 44c96 132 208 26 292-40s176-16 246 92"/><circle cx="12" cy="48" r="12"/></svg>
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">Research</div>
+      <h2>And the work<br>behind the work</h2>
+      <p class="sub">A graduation thesis on privacy-preserving document understanding, a statistical study of Tunisian climate, and a reproduction of an image-captioning paper that came out ahead of the original.</p>
+    </div>
+
+    <div class="metrics rv">
+      <div class="metric"><div class="n">98.4%</div><div class="l">variance explained by two components, PCA study</div></div>
+      <div class="metric"><div class="n">0.2224</div><div class="l">BLEU-4, above the paper's published 0.2130</div></div>
+      <div class="metric"><div class="n">0.941</div><div class="l">R² on latency prediction, QoS Buddy</div></div>
+          </div>
+
+    <div class="rgrid">
+      <article class="rcard rv">
+        <div class="rhead"><h3>JobReady — privacy-preserving document understanding</h3><span class="badge">Master's thesis</span></div>
+        <div class="meta">2025–2026 · supervised by Anis Ben Aicha · defence autumn 2026</div>
+        <p>A B2B staffing platform that turns unstructured CVs into queryable representations, matches them semantically to roles, and simulates interviews with language models. Three phases, three research problems: information extraction, representation learning and retrieval, and LLM-driven dialogue.</p>
+        <div class="find"><b>The design constraint:</b> the language model never learns who the candidate is. Every CV is pseudonymised with Presidio and spaCy NER <b>before any model call</b>, then re-identified locally afterwards. That implements GDPR Article 5(1)(c) in the pipeline rather than in a policy document — and the EU AI Act classifies employment AI as high-risk.</div>
+        <p>Matching runs on <strong>text-embedding-3-small</strong> vectors in PostgreSQL with pgvector, compared by cosine similarity. Extraction uses GPT-4o constrained to strict JSON. A custom agent orchestration layer keeps state across a conversation.</p>
+        <div class="tags"><span class="tag">GPT-4o</span><span class="tag">pgvector</span><span class="tag">Presidio</span><span class="tag">spaCy</span><span class="tag">FastAPI</span><span class="tag">NestJS</span><span class="tag">GDPR / EU AI Act</span></div>
+        <div class="links"><a href="https://github.com/EyaAzzabi/jobready" target="_blank" rel="noopener">Architecture &amp; research write-up →</a></div>
+      </article>
+
+      <article class="rcard rv">
+        <div class="rhead"><h3>PCA of Tunisian temperatures</h3><span class="badge">Bachelor's thesis · extended</span></div>
+        <div class="meta">2024 · supervised by Prof. Chaouki Aouiti · team of 3</div>
+        <p>Given only twelve monthly averages per station and <strong>no geography at all</strong>, what structure does PCA recover from Tunisian climate data?</p>
+        <div class="find">Two components explain <b>98.4%</b> of the variation across 16 stations. The first is mean annual temperature (<b>r = 0.9996</b>). The second is the seasonal swing (<b>r = 0.9893</b>) — and it separates coastal stations from inland ones using a label the model never received. PCA found the Mediterranean without being told where the sea is.</div>
+
+        <div class="viz">
+          <div class="vizhead">
+            <div class="mono" style="color:var(--ink-3)">Stations in the F1–F2 plane · hover a point</div>
+            <div class="legend">
+              <span><i class="sw" style="background:#2E7D8C"></i>Coastal</span>
+              <span><i class="sw" style="background:#C1703C"></i>Interior</span>
+            </div>
+          </div>
+          <div style="position:relative">
+            <svg id="pca" viewBox="0 0 620 380" role="img" aria-label="Scatter plot of 16 Tunisian weather stations on the first two principal components"></svg>
+            <div class="tip" id="tip"></div>
+          </div>
+        </div>
+
+        <div class="tags"><span class="tag">Python</span><span class="tag">NumPy</span><span class="tag">PCA</span><span class="tag">Climate data</span></div>
+        <div class="links"><a href="https://github.com/EyaAzzabi/pca-tunisia-temperatures" target="_blank" rel="noopener">Code, data and full analysis →</a></div>
+      </article>
+
+      <article class="rcard rv">
+        <div class="rhead"><h3>Image captioning with visual attention</h3><span class="badge">Deep learning</span></div>
+        <div class="meta">2026 · reimplementation and comparison on Flickr8k</div>
+        <p>A faithful reimplementation of <em>Show, Attend and Tell</em> (Xu et al., 2015) against a Transformer decoder, plus a visual question answering model.</p>
+        <div class="find">The reimplementation reaches <b>BLEU-4 of 0.2224</b>, slightly above the <b>0.2130</b> reported in the original paper. The Transformer decoder scored lower (0.2017) — expected on 8,000 images, and worth reporting rather than hiding.</div>
+        <p><strong>Attention entropy analysis:</strong> attention over nouns (3.7268) is measurably more concentrated than over function words (3.7883), against a uniform ceiling of 3.8918. The mechanism behaves as the paper claims, and the margin is smaller than the usual cherry-picked visualisations suggest.</p>
+        <div class="tags"><span class="tag">PyTorch</span><span class="tag">CNN encoders</span><span class="tag">Cross-attention</span><span class="tag">Transformers</span><span class="tag">VQA</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="story" class="story">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">The part that isn't on my CV</div>
+      <h2>From rejection<br>to opportunity</h2>
+      <p class="sub">I keep the rejection emails. I spoke about them on stage at WYSE, because I think students only ever see other people's finished results, never the road there.</p>
+    </div>
+
+    <div class="twocol">
+      <div class="rv">
+        <div class="colhead">What I was told</div>
+        <div class="stack">
+          <div class="slip no"><span class="k">Work-study competition, 2025</span><em>“You have not been admitted following this session.”</em></div>
+          <div class="slip no"><span class="k">Internship application</span><em>“Unfortunately, after careful consideration, we have decided not to move forward with your application.”</em></div>
+          <div class="slip no"><span class="k">Another application</span><em>“Unfortunately, your application was not successful.”</em></div>
+        </div>
+      </div>
+      <div class="rv">
+        <div class="colhead">What happened next</div>
+        <div class="stack">
+          <div class="slip yes"><span class="k">Engineering degree</span><em>Enrolled in the full-time engineering programme at ESPRIT instead, and funded it myself.</em></div>
+          <div class="slip yes"><span class="k">Talan Tunisie</span><em>“Congrats, you made it!” — AI consultant internship, building agents for Connect'IS.</em></div>
+          <div class="slip yes"><span class="k">Mafrah</span><em>Hired as AI &amp; Backend Developer while still studying, now shipping AI to real users.</em></div>
+          <div class="slip yes"><span class="k">WYSE, full circle</span><em>Attended WYSE 1.0 as a participant. Came back to WYSE 2.0 as a speaker.</em></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="turn rv">
+      The rejection that stung most turned out to be the one that mattered. Not being admitted to the work-study track is the reason I enrolled in the engineering degree and paid for it myself — which is why I now carry <b>two degrees and a job at the same time</b>.
+      <br><br>
+      In July 2025 I sat in the audience at WYSE as a participant. That room is where the opportunity I am working in today came from. A year later I was back at the same event, <b>on the stage instead of in the seats</b>, telling students about the rejection emails. I did not plan any of it. I just kept going, and the path assembled itself behind me.
+    </div>
+
+    <div class="rv" style="margin-top:34px">
+      <div class="colhead" style="margin-bottom:12px">WYSE 2.0 · Cité des Sciences</div>
+      <div class="vidwrap" id="vw2" style="max-width:760px">
+        <video id="vid2" preload="none" playsinline controls poster="assets/wyse-speech-poster.jpg">
+          <source src="assets/wyse-speech.mp4" type="video/mp4">
+        </video>
+        <div class="poster" style="background-image:url(assets/wyse-speech-poster.jpg)"
+             onclick="const v=document.getElementById('vid2');document.getElementById('vw2').classList.add('playing');v.play()">
+          <div class="play"><svg width="22" height="24" viewBox="0 0 22 24" fill="#fff"><path d="M0 0l22 12L0 24z"/></svg></div>
+        </div>
+      </div>
+      <p style="margin-top:12px;font-size:.88rem;color:#8E8E82">
+        Also posted <a href="https://www.linkedin.com/feed/update/urn:li:activity:7485291636277776384" target="_blank" rel="noopener" style="color:var(--sage-l);font-weight:600">on LinkedIn &rarr;</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <svg class="dash" style="top:4%;left:-7%;width:44%" viewBox="0 0 440 240" aria-hidden="true"><path d="M8 22c74 118 168 130 250 52s126-58 176 22"/><circle cx="12" cy="26" r="12"/></svg>
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">Path</div>
+      <h2>Two degrees, one job,<br>at the same time</h2>
+      <p class="sub">I took the second degree by choice and fund it myself. I did not want to pick between building things and understanding them.</p>
+    </div>
+
+    <div class="tl">
+      <div class="ev now rv">
+        <div class="when">Sept 2025 — present</div>
+        <h3>AI &amp; Backend Developer</h3>
+        <div class="where">Mafrah (formerly WebFullContact) · remote</div>
+        <p>Designing AI-driven backend services: integrating language models into production systems, building data processing workflows, and maintaining scalable APIs supporting AI functionality.</p>
+      </div>
+      <div class="ev now rv">
+        <div class="when">Sept 2025 — Oct 2027</div>
+        <h3>Engineering Degree, Data Science</h3>
+        <div class="where">ESPRIT — Private Higher School of Engineering and Technology, Tunis</div>
+        <p>Undergraduate engineering programme, self-funded, taken in parallel with the Master's.</p>
+      </div>
+      <div class="ev now rv">
+        <div class="when">Sept 2024 — 2026</div>
+        <h3>Master's in Data Science</h3>
+        <div class="where">Faculty of Sciences of Bizerte, University of Carthage</div>
+        <p>Ranked first in cohort. Graduation project: JobReady, a privacy-preserving document understanding platform.</p>
+      </div>
+      <div class="ev rv">
+        <div class="when">Jul — Aug 2025</div>
+        <h3>AI Consultant Intern · Talan Summer Camp</h3>
+        <div class="where">Talan Tunisie</div>
+        <p>Selected for the Talan Summer Camp, where I built <strong>Connect'IS</strong> — an AI-driven sales platform — from the ground up with a cross-functional team. I implemented the intelligent agents behind lead prioritisation, forecasting and automated outreach, and contributed to the front end.</p>
+      </div>
+      <div class="ev rv">
+        <div class="when">2021 — 2024</div>
+        <h3>BSc Mathematics &amp; Computer Science</h3>
+        <div class="where">Faculty of Sciences of Bizerte, University of Carthage</div>
+        <p>Thesis: principal component analysis of monthly temperatures across Tunisian meteorological stations, supervised by Prof. Chaouki Aouiti.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" style="background:var(--cream-2);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">Toolkit</div>
+      <h2>What I actually use</h2>
+      <p class="sub">Rated honestly. Depth in a few things beats a wall of logos.</p>
+    </div>
+    <div class="sgrid">
+      <div class="sgroup rv">
+        <h3>LLM &amp; generative AI</h3>
+        <div class="skill"><div class="srow"><span>LLM agents &amp; orchestration</span><span>Advanced</span></div><div class="bar"><i data-w="88"></i></div></div>
+        <div class="skill"><div class="srow"><span>RAG &amp; vector search</span><span>Advanced</span></div><div class="bar"><i data-w="85"></i></div></div>
+        <div class="skill"><div class="srow"><span>LangChain</span><span>Proficient</span></div><div class="bar"><i data-w="75"></i></div></div>
+        <div class="skill"><div class="srow"><span>Fine-tuning (LoRA)</span><span>Proficient</span></div><div class="bar"><i data-w="68"></i></div></div>
+      </div>
+      <div class="sgroup rv">
+        <h3>Machine learning</h3>
+        <div class="skill"><div class="srow"><span>scikit-learn</span><span>Advanced</span></div><div class="bar"><i data-w="90"></i></div></div>
+        <div class="skill"><div class="srow"><span>PyTorch</span><span>Proficient</span></div><div class="bar"><i data-w="76"></i></div></div>
+        <div class="skill"><div class="srow"><span>Computer vision (YOLO, CLIP)</span><span>Proficient</span></div><div class="bar"><i data-w="74"></i></div></div>
+        <div class="skill"><div class="srow"><span>Statistics &amp; PCA</span><span>Advanced</span></div><div class="bar"><i data-w="88"></i></div></div>
+      </div>
+      <div class="sgroup rv">
+        <h3>Engineering</h3>
+        <div class="skill"><div class="srow"><span>Python</span><span>Advanced</span></div><div class="bar"><i data-w="92"></i></div></div>
+        <div class="skill"><div class="srow"><span>SQL / PostgreSQL</span><span>Advanced</span></div><div class="bar"><i data-w="82"></i></div></div>
+        <div class="skill"><div class="srow"><span>FastAPI &amp; REST APIs</span><span>Proficient</span></div><div class="bar"><i data-w="78"></i></div></div>
+        <div class="skill"><div class="srow"><span>Docker</span><span>Proficient</span></div><div class="bar"><i data-w="70"></i></div></div>
+      </div>
+      <div class="sgroup rv">
+        <h3>Data at scale</h3>
+        <div class="skill"><div class="srow"><span>pandas / NumPy</span><span>Advanced</span></div><div class="bar"><i data-w="90"></i></div></div>
+        <div class="skill"><div class="srow"><span>MongoDB / Elasticsearch</span><span>Proficient</span></div><div class="bar"><i data-w="68"></i></div></div>
+        <div class="skill"><div class="srow"><span>Spark &amp; Hadoop</span><span>Familiar</span></div><div class="bar"><i data-w="55"></i></div></div>
+        <div class="skill"><div class="srow"><span>R</span><span>Familiar</span></div><div class="bar"><i data-w="52"></i></div></div>
+      </div>
+    </div>
+    <p class="mono rv" style="margin-top:24px;color:var(--ink-3)">
+      Certifications — DataCamp: Developing Applications with LangChain · DataCamp: LLM Concepts · AWS Academy Data Engineering · NVIDIA
+    </p>
+  </div>
+</section>
+
+<section id="certs">
+  <svg class="dash pale" style="bottom:-8%;right:-6%;width:48%" viewBox="0 0 480 220" aria-hidden="true"><path d="M8 60c84 118 186 40 262-22s130-52 202 40"/><circle cx="14" cy="64" r="12"/></svg>
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">Certifications</div>
+      <h2>Credentials</h2>
+      <p class="sub">Formal training that backs the work — generative AI, data engineering and accelerated computing.</p>
+    </div>
+
+    <div class="certgrid" id="certgrid">
+      <article class="cert rv">
+        <span class="issuer" style="--iss:#5E9400">NVIDIA</span>
+        <h3>Applications of AI for Anomaly Detection</h3>
+        <div class="when">April 2026</div>
+        <div class="topics"><span>Anomaly detection</span><span>Deep learning</span></div>
+        <a class="verify" href="https://learn.nvidia.com/certificates?id=TVcsuqqrR5yOe4ABKL1kzA" target="_blank" rel="noopener">Verify certificate →</a>
+        <div class="thumb" onclick="openLb('assets/cert-nvidia-anomaly.png')"><img src="assets/cert-nvidia-anomaly.png" alt="NVIDIA Certificate of Competency, Applications of AI for Anomaly Detection" loading="lazy"></div>
+      </article>
+      <article class="cert rv">
+        <span class="issuer" style="--iss:#5E9400">NVIDIA</span>
+        <h3>Fundamentals of Deep Learning</h3>
+        <div class="when">January 2026</div>
+        <div class="topics"><span>Deep learning</span><span>Fine-tuning</span></div>
+        <a class="verify" href="https://learn.nvidia.com/certificates?id=1tO0Ys3ITkGJkXM3sgBKrQ" target="_blank" rel="noopener">Verify certificate →</a>
+      </article>
+      <article class="cert rv">
+        <span class="issuer" style="--iss:#05192D">DataCamp</span>
+        <h3>Developing Applications with LangChain</h3>
+        <div class="when">February 2025</div>
+        <div class="topics"><span>LangChain</span><span>LLM apps</span><span>Chains</span></div>
+      </article>
+      <article class="cert rv">
+        <span class="issuer" style="--iss:#05192D">DataCamp</span>
+        <h3>Large Language Model Concepts</h3>
+        <div class="when">February 2025</div>
+        <div class="topics"><span>LLMs</span><span>Transformers</span></div>
+      </article>
+      <article class="cert rv">
+        <span class="issuer" style="--iss:#E88B00">AWS Academy</span>
+        <h3>Data Engineering — Graduate</h3>
+        <div class="when">May 2025</div>
+        <div class="topics"><span>Pipelines</span><span>ETL</span><span>Securing data</span></div>
+      </article>
+      <article class="cert rv">
+        <span class="issuer" style="--iss:#5E9400">NVIDIA</span>
+        <h3>Getting Started with AI on Jetson Nano</h3>
+        <div class="when">January 2025</div>
+        <div class="topics"><span>Edge AI</span><span>Embedded vision</span></div>
+        <a class="verify" href="https://learn.nvidia.com/certificates?id=_SMMCkJuTvGTGRZ4HPswog" target="_blank" rel="noopener">Verify certificate →</a>
+      </article>
+      <article class="cert rv">
+        <span class="issuer" style="--iss:#E88B00">AWS</span>
+        <h3>Introduction to Generative AI</h3>
+        <div class="when">January 2025</div>
+        <div class="topics"><span>Generative AI</span><span>Cloud</span></div>
+      </article>
+      <article class="cert rv">
+        <span class="issuer" style="--iss:#05192D">DataCamp</span>
+        <h3>Understanding Machine Learning</h3>
+        <div class="when">January 2025</div>
+        <div class="topics"><span>Machine learning</span><span>Algorithms</span></div>
+        <div class="cid">ID 38523512</div>
+      </article>
+    </div>
+
+    <p class="certcount rv" id="certcount"></p>
+  </div>
+</section>
+
+<section id="beyond">
+  <svg class="dash pale" style="top:-4%;right:-5%;width:50%" viewBox="0 0 500 230" aria-hidden="true"><path d="M494 30c-88 122-190 44-268-20S86 4 8 116"/><circle cx="12" cy="120" r="12"/></svg>
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">Beyond the code</div>
+      <h2>Work that isn't technical</h2>
+      <p class="sub">Most of what I build is aimed at people the existing systems overlook — blind users, women's health, graduates trying to get hired.</p>
+    </div>
+    <div class="collage rv">
+      <figure class="c-a"><img src="assets/team-talan.png" alt="Talan Summer Camp team" loading="lazy"></figure>
+      <figure class="c-b"><img src="assets/wyse-eya.jpg" alt="Eya at WYSE" loading="lazy"></figure>
+      <figure class="c-c"><img src="assets/team-hackathon.jpg" alt="Hackathon team" loading="lazy"></figure>
+      <figure class="c-d"><img src="assets/team-enactus.jpg" alt="Enactus FSB team" loading="lazy"></figure>
+    </div>
+
+    <div class="bgrid">
+      <div class="bcard rv">
+        <div class="ico">🎤</div>
+        <h3>Speaking for women in STEM</h3>
+        <div class="role">WYSE · Radio Amal · 2025–2026</div>
+        <p>Attended WYSE — Women &amp; Youth in STEM Employment — as a participant, where the opportunity behind my current role came from. Returned to the next edition as a speaker, talking about the road into STEM employment and the rejections along the way. Also spoke on Radio Amal, in Tunisian Arabic, about women in technology.</p>
+      </div>
+      <div class="bcard rv">
+        <div class="ico">🏛️</div>
+        <h3>Association Youth Clubs</h3>
+        <div class="role">Co-founder · 2019–2021</div>
+        <p>Co-founded the first youth club in Morneg, Ben Arous, building it from nothing while still at school.</p>
+      </div>
+      <div class="bcard rv">
+        <div class="ico">💡</div>
+        <h3>Enactus FSB</h3>
+        <div class="role">Project developer, then sponsorship · 2023–2025</div>
+        <p>Developed SenseMate, an assistive AI device for visually impaired users that won the Early Stage award at the Enactus National Exposition.</p>
+      </div>
+      <div class="bcard rv">
+        <div class="ico">🌍</div>
+        <h3>Soliya Connect Program</h3>
+        <div class="role">Alumna · 2023</div>
+        <p>Collaborated with international teams across cultures and wrote analytical and cultural-exchange articles.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap cinner">
+    <div class="rv">
+      <div class="eyebrow">Contact</div>
+      <h2>Let's connect</h2>
+      <p class="sub">I am looking for a <strong>6-month final-year engineering internship starting January 2027</strong>, in LLM agents, privacy-preserving machine learning, computer vision, or applied statistical modelling. Research settings and research-driven teams interest me most.</p>
+      <p class="sub" style="margin-top:12px">I am <strong>open to relocation</strong> and would happily move for the right project. I work in English and French, and speak Arabic natively.</p>
+      <div class="chiprow" style="margin-top:22px">
+        <span class="chip">Europe</span><span class="chip">Canada</span><span class="chip">Remote</span>
+      </div>
+    </div>
+    <div class="clinks rv">
+      <a class="clink" href="mailto:eyaazzabi04@gmail.com"><div><div class="k">Email</div><div class="v">eyaazzabi04@gmail.com</div></div></a>
+      <a class="clink" href="https://www.linkedin.com/in/eya-azzabi/" target="_blank" rel="noopener"><div><div class="k">LinkedIn</div><div class="v">/in/eya-azzabi</div></div></a>
+      <a class="clink" href="https://github.com/EyaAzzabi" target="_blank" rel="noopener"><div><div class="k">GitHub</div><div class="v">@EyaAzzabi</div></div></a>
+      <a class="clink" href="assets/Eya-Azzabi-CV.pdf" download><div><div class="k">Curriculum vitae</div><div class="v">Download PDF</div></div></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Eya Azzabi · Ben Arous, Tunisia</span>
+    <span class="mono">Built from scratch · no frameworks</span>
+  </div>
+</footer>
+
+<div class="lb" id="lb" onclick="closeLb(event)">
+  <button class="x" aria-label="Close" onclick="closeLb(event,true)">✕</button>
+  <img id="lbimg" src="" alt="Certificate">
+</div>
+
+<script>
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('stuck',scrollY>20),{passive:true});
+document.querySelectorAll('#menu a').forEach(a=>a.onclick=()=>document.getElementById('menu').classList.remove('open'));
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;
+  e.target.classList.add('in');
+  e.target.querySelectorAll('.bar i').forEach((b,i)=>setTimeout(()=>b.style.width=b.dataset.w+'%',i*90));
+  io.unobserve(e.target);
+}),{threshold:.13,rootMargin:'0px 0px -60px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+/* interactive PCA */
+(()=>{
+  const D=[
+    ["Kasserine",-6.741,2.810,"interior",16.10],["Tabarka",-4.973,-1.793,"coastal",16.89],
+    ["Cebbala",-1.525,2.729,"interior",18.32],["Bizerte",-1.472,-2.990,"coastal",18.40],
+    ["Korba",-1.043,-2.631,"coastal",18.58],["Nabeul",-0.970,-2.631,"coastal",18.60],
+    ["Tunis",-0.826,-0.803,"coastal",18.66],["Sidi Bouzid",-0.779,2.501,"interior",18.63],
+    ["Sfax",1.046,-0.357,"coastal",19.40],["Sousse",1.270,0.356,"coastal",19.47],
+    ["Kairouan",1.439,2.013,"interior",19.58],["Chebba",1.487,-1.180,"coastal",19.62],
+    ["Tataouine",2.288,1.858,"interior",19.86],["Medenine",3.375,1.108,"interior",20.32],
+    ["Zarzis",3.480,-1.000,"coastal",20.40],["Gabes",3.944,0.011,"coastal",20.59]
+  ];
+  const svg=document.getElementById('pca'),tip=document.getElementById('tip');
+  if(!svg)return;
+  const W=620,H=380,M={t:22,r:24,b:38,l:46};
+  const xs=D.map(d=>d[1]),ys=D.map(d=>d[2]);
+  const xmin=Math.min(...xs)-.8,xmax=Math.max(...xs)+.9;
+  const ymin=Math.min(...ys)-.6,ymax=Math.max(...ys)+.6;
+  const px=v=>M.l+(v-xmin)/(xmax-xmin)*(W-M.l-M.r);
+  const py=v=>H-M.b-(v-ymin)/(ymax-ymin)*(H-M.t-M.b);
+  const NS='http://www.w3.org/2000/svg';
+  const mk=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e};
+
+  svg.appendChild(mk('line',{class:'ax',x1:M.l,y1:py(0),x2:W-M.r,y2:py(0)}));
+  svg.appendChild(mk('line',{class:'ax',x1:px(0),y1:M.t,x2:px(0),y2:H-M.b}));
+  let l=mk('text',{class:'axlab',x:W-M.r,y:H-14,'text-anchor':'end'});
+  l.textContent='F1 (67.3%) — mean annual temperature'; svg.appendChild(l);
+  l=mk('text',{class:'axlab',x:-M.t-6,y:14,transform:'rotate(-90)','text-anchor':'end'});
+  l.textContent='F2 (31.1%) — seasonal amplitude'; svg.appendChild(l);
+
+  D.forEach((d,i)=>{
+    const [name,f1,f2,set,mean]=d;
+    const col=set==='coastal'?'#2E7D8C':'#C1703C';
+    const dot=mk('circle',{class:'pt',cx:px(f1),cy:py(f2),r:0,fill:col,'fill-opacity':.9,stroke:'#fff','stroke-width':1.5});
+    const lab=mk('text',{x:px(f1)+9,y:py(f2)+3.2});
+    lab.textContent=name;
+    svg.append(dot,lab);
+    setTimeout(()=>dot.setAttribute('r',6),240+i*45);
+    const show=()=>{
+      const r=svg.getBoundingClientRect(),sc=r.width/W;
+      tip.style.left=(px(f1)*sc)+'px'; tip.style.top=(py(f2)*sc)+'px'; tip.style.opacity=1;
+      tip.innerHTML='<b>'+name+'</b> · '+set+
+        '<span class="m">F1 '+f1.toFixed(2)+'  ·  F2 '+f2.toFixed(2)+'</span>'+
+        '<span class="m">annual mean '+mean.toFixed(2)+' °C</span>';
+    };
+    dot.addEventListener('mouseenter',show);
+    dot.addEventListener('touchstart',show,{passive:true});
+    dot.addEventListener('mouseleave',()=>tip.style.opacity=0);
+  });
+})();
+
+function openLb(src){const l=document.getElementById('lb');document.getElementById('lbimg').src=src;l.classList.add('on');document.body.style.overflow='hidden'}
+function closeLb(e,force){if(force||e.target.id==='lb'){document.getElementById('lb').classList.remove('on');document.body.style.overflow=''}}
+addEventListener('keydown',e=>{if(e.key==='Escape')closeLb(null,true)});
+
+const cc=document.getElementById('certcount');
+if(cc)cc.textContent=document.querySelectorAll('#certgrid .cert').length+' selected certifications · NVIDIA, DataCamp, AWS';
+
+document.querySelectorAll('.fbtn').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');
+  const f=b.dataset.f;
+  document.querySelectorAll('.pcard').forEach(c=>{
+    c.classList.toggle('hide', f!=='all' && !c.dataset.t.split(' ').includes(f));
+  });
+});
+</script>
+</body>
+</html>

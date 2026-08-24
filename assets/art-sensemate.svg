@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Real-time object detection with radiating sensing waves">
+<rect width="800" height="450" fill="#EFEDE4"/>
+<g stroke="#C9C5B7" stroke-width="1" opacity=".55">
+<path d="M0 90h800M0 180h800M0 270h800M0 360h800M100 0v450M250 0v450M400 0v450M550 0v450M700 0v450"/></g>
+<g fill="none" stroke="#87A05E" stroke-linecap="round">
+<circle cx="150" cy="300" r="52" stroke-width="3" opacity=".85"/>
+<circle cx="150" cy="300" r="94" stroke-width="3" stroke-dasharray="13 17" opacity=".62"/>
+<circle cx="150" cy="300" r="140" stroke-width="3" stroke-dasharray="13 17" opacity=".4"/>
+<circle cx="150" cy="300" r="190" stroke-width="3" stroke-dasharray="13 17" opacity=".22"/></g>
+<circle cx="150" cy="300" r="13" fill="#647B44"/>
+<g fill="none" stroke="#232320" stroke-width="3.5" stroke-linecap="round">
+<path d="M392 108h-30v-30M508 108h30v-30M392 212h-30v30M508 212h30v30"/></g>
+<rect x="362" y="78" width="176" height="164" rx="6" fill="#87A05E" opacity=".1"/>
+<text x="362" y="66" font-family="ui-monospace,monospace" font-size="19" fill="#647B44" letter-spacing="1">person 0.98</text>
+<g fill="none" stroke="#232320" stroke-width="3" stroke-linecap="round" opacity=".8">
+<path d="M622 268h-22v-22M718 268h22v-22M622 348h-22v22M718 348h22v22"/></g>
+<rect x="600" y="246" width="140" height="124" rx="6" fill="#C1703C" opacity=".1"/>
+<text x="600" y="234" font-family="ui-monospace,monospace" font-size="17" fill="#8C8C81" letter-spacing="1">door 0.91</text>
+<g fill="#647B44"><circle cx="150" cy="300" r="0"><animate attributeName="r" values="13;22;13" dur="3.2s" repeatCount="indefinite"/><animate attributeName="opacity" values=".55;0;.55" dur="3.2s" repeatCount="indefinite"/></circle></g>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Agent pipeline routing leads through scoring to outreach">
+<rect width="800" height="450" fill="#EFEDE4"/>
+<g stroke="#C9C5B7" stroke-width="1" opacity=".5"><path d="M0 112h800M0 225h800M0 338h800"/></g>
+<g fill="none" stroke="#87A05E" stroke-width="3" stroke-dasharray="12 15" stroke-linecap="round">
+<path d="M188 225h84M452 130h72M452 225h72M452 320h72M660 130c40 0 40 95 0 95M660 320c40 0 40-95 0-95"/></g>
+<rect x="52" y="184" width="136" height="82" rx="16" fill="#232320"/>
+<text x="120" y="222" text-anchor="middle" font-family="ui-monospace,monospace" font-size="17" fill="#EFEDE4">inbound</text>
+<text x="120" y="246" text-anchor="middle" font-family="ui-monospace,monospace" font-size="17" fill="#EFEDE4">leads</text>
+<rect x="272" y="166" width="180" height="118" rx="20" fill="#87A05E"/>
+<text x="362" y="212" text-anchor="middle" font-family="Inter,sans-serif" font-size="21" font-weight="700" fill="#fff">agent</text>
+<text x="362" y="240" text-anchor="middle" font-family="ui-monospace,monospace" font-size="16" fill="#fff" opacity=".85">orchestrator</text>
+<g font-family="ui-monospace,monospace" font-size="16" fill="#232320">
+<rect x="524" y="102" width="136" height="56" rx="14" fill="#EFEDE4" stroke="#647B44" stroke-width="2.5"/><text x="592" y="136" text-anchor="middle">score</text>
+<rect x="524" y="197" width="136" height="56" rx="14" fill="#EFEDE4" stroke="#647B44" stroke-width="2.5"/><text x="592" y="231" text-anchor="middle">forecast</text>
+<rect x="524" y="292" width="136" height="56" rx="14" fill="#EFEDE4" stroke="#647B44" stroke-width="2.5"/><text x="592" y="326" text-anchor="middle">enrich</text></g>
+<rect x="688" y="197" width="72" height="56" rx="14" fill="#C1703C"/>
+<text x="724" y="231" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="#fff">out</text>
+<circle cx="230" cy="225" r="7" fill="#647B44"/><circle cx="488" cy="225" r="7" fill="#647B44"/>
+</svg>

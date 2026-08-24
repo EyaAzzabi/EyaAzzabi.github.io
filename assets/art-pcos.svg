@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="ROC curves comparing six classifiers">
+<rect width="800" height="450" fill="#EFEDE4"/>
+<g stroke="#C9C5B7" stroke-width="1" opacity=".6">
+<path d="M120 60v320M120 380h580M120 300h580M120 220h580M120 140h580M264 60v320M408 60v320M552 60v320M696 60v320"/></g>
+<path d="M120 380 696 60" stroke="#B6B2A2" stroke-width="2.5" stroke-dasharray="9 11" fill="none"/>
+<path d="M120 380C186 214 300 130 420 104s200-30 276-44" stroke="#B3C495" stroke-width="3" fill="none" opacity=".75"/>
+<path d="M120 380C176 190 288 112 408 90s216-24 288-30" stroke="#C1703C" stroke-width="3" fill="none" opacity=".65"/>
+<path d="M120 380C164 160 268 92 396 74s228-12 300-14" stroke="#647B44" stroke-width="5" fill="none" stroke-linecap="round"/>
+<circle cx="696" cy="60" r="8" fill="#647B44"/>
+<text x="150" y="112" font-family="ui-monospace,monospace" font-size="21" fill="#647B44" font-weight="600">XGBoost</text>
+<text x="150" y="140" font-family="ui-monospace,monospace" font-size="17" fill="#8C8C81">Random Forest</text>
+<text x="150" y="166" font-family="ui-monospace,monospace" font-size="17" fill="#8C8C81">Logistic Regression</text>
+<text x="120" y="416" font-family="ui-monospace,monospace" font-size="17" fill="#8C8C81">false positive rate</text>
+<text x="-300" y="44" transform="rotate(-90)" font-family="ui-monospace,monospace" font-size="17" fill="#8C8C81">true positive rate</text>
+</svg>
