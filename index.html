@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Eya Azzabi — AI &amp; Data Engineer</title>
+<title>Eya Azzabi: AI &amp; Data Engineer</title>
 <meta name="description" content="AI &amp; Data Engineering student at ESPRIT. LLM agents, privacy-preserving machine learning, computer vision. Available from January 2027 for a 6-month final-year engineering internship. Open to relocation in Europe and Canada.">
-<meta property="og:title" content="Eya Azzabi — AI &amp; Data Engineer">
+<meta property="og:title" content="Eya Azzabi: AI &amp; Data Engineer">
 <meta property="og:description" content="Engineer by training, mathematician by instinct. I build AI systems that reach real users and want to know why they work.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -315,8 +315,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
       <h1 class="name">Eya<br>Azzabi</h1>
       <div class="role">AI &amp; Data Engineer</div>
       <p class="lede">
-        Engineer by training, mathematician by instinct. I build <b>AI systems that reach real users</b>
-        — LLM agents and RAG, data pipelines that run every day, and models I can tell you the error bars on.
+        Engineer by training, mathematician by instinct. I build <b>AI systems that reach real users</b>:
+        LLM agents and RAG, data pipelines that run every day, and models I can tell you the error bars on.
         Most of what I build ships; all of it gets measured.
       </p>
       <div class="chiprow">
@@ -346,7 +346,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
     <div class="rv">
       <div class="eyebrow">Selected work</div>
       <h2>Things I have built</h2>
-      <p class="sub">A recruitment platform serving nearly ten thousand players, a retrieval harness that measures what most teams guess at, and a pipeline that has ingested data every morning since the day it was written. Agentic systems, assistive technology and applied machine learning — most of it shipped, all of it measured.</p>
+      <p class="sub">A recruitment platform serving nearly ten thousand players, a retrieval harness that measures what most teams guess at, and a pipeline that has ingested data every morning since the day it was written. Agentic systems, assistive technology and applied machine learning; most of it shipped, all of it measured.</p>
     </div>
 
     <div class="filters rv">
@@ -374,7 +374,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
         <div class="pbody">
           <h3>rag-eval-lab</h3>
           <div class="meta">Retrieval evaluation harness · open source</div>
-          <p>Everyone building with LLMs has a RAG demo; few can state their retrieval recall. This measures it — BM25, dense vectors and rank fusion across three chunking strategies, scored on recall@k, MRR and nDCG against human relevance judgments, with serving cost reported beside every quality number. The finding: finer chunks help dense retrieval and <em>hurt</em> BM25, and the two cross.</p>
+          <p>Everyone building with LLMs has a RAG demo; few can state their retrieval recall. This measures it: BM25, dense vectors and rank fusion across three chunking strategies, scored on recall@k, MRR and nDCG against human relevance judgments, with serving cost reported beside every quality number. The finding: finer chunks help dense retrieval and <em>hurt</em> BM25, and the two cross.</p>
           <div class="kpi">nDCG@10 0.693 hybrid · 9 configurations · 25 tests</div>
           <div class="links"><a href="https://github.com/EyaAzzabi/rag-eval-lab" target="_blank" rel="noopener">View repository →</a></div>
         </div>
@@ -385,7 +385,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
         <div class="pbody">
           <h3>daily-climate-pipeline <span class="badge live">Runs daily</span></h3>
           <div class="meta">Data engineering · scheduled on GitHub Actions</div>
-          <p>A pipeline built around the problems that only appear on the <em>second</em> run: what happens when the same day is ingested twice, when one source of ten fails, when the API starts returning nulls — and how you would find out. Fourteen quality checks run before the load, so a blocking failure leaves the warehouse untouched.</p>
+          <p>A pipeline built around the problems that only appear on the <em>second</em> run: what happens when the same day is ingested twice, when one source of ten fails, when the API starts returning nulls, and how you would find out. Fourteen quality checks run before the load, so a blocking failure leaves the warehouse untouched.</p>
           <div class="kpi">Idempotent loads · DuckDB · 28 tests · ingests every morning</div>
           <div class="links"><a href="https://github.com/EyaAzzabi/daily-climate-pipeline" target="_blank" rel="noopener">View repository →</a></div>
         </div>
@@ -489,10 +489,10 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 
     <div class="rgrid">
       <article class="rcard rv">
-        <div class="rhead"><h3>JobReady — privacy-preserving document understanding</h3><span class="badge">Master's thesis</span></div>
-        <div class="meta">2025–2026 · supervised by Anis Ben Aicha · defence autumn 2026</div>
+        <div class="rhead"><h3>JobReady: privacy-preserving document understanding</h3><span class="badge">Master's thesis</span></div>
+        <div class="meta">2025 to 2026 · supervised by Anis Ben Aicha · defence autumn 2026</div>
         <p>A B2B staffing platform that turns unstructured CVs into queryable representations, matches them semantically to roles, and simulates interviews with language models. Three phases, three research problems: information extraction, representation learning and retrieval, and LLM-driven dialogue.</p>
-        <div class="find"><b>The design constraint:</b> the language model never learns who the candidate is. Every CV is pseudonymised with Presidio and spaCy NER <b>before any model call</b>, then re-identified locally afterwards. That implements GDPR Article 5(1)(c) in the pipeline rather than in a policy document — and the EU AI Act classifies employment AI as high-risk.</div>
+        <div class="find"><b>The design constraint:</b> the language model never learns who the candidate is. Every CV is pseudonymised with Presidio and spaCy NER <b>before any model call</b>, then re-identified locally afterwards. That implements GDPR Article 5(1)(c) in the pipeline rather than in a policy document, and the EU AI Act classifies employment AI as high-risk.</div>
         <p>Matching runs on <strong>text-embedding-3-small</strong> vectors in PostgreSQL with pgvector, compared by cosine similarity. Extraction uses GPT-4o constrained to strict JSON. A custom agent orchestration layer keeps state across a conversation.</p>
         <div class="tags"><span class="tag">GPT-4o</span><span class="tag">pgvector</span><span class="tag">Presidio</span><span class="tag">spaCy</span><span class="tag">FastAPI</span><span class="tag">NestJS</span><span class="tag">GDPR / EU AI Act</span></div>
         <div class="links"><a href="https://github.com/EyaAzzabi/jobready" target="_blank" rel="noopener">Architecture &amp; research write-up →</a></div>
@@ -502,11 +502,11 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
         <div class="rhead"><h3>PCA of Tunisian temperatures</h3><span class="badge">Bachelor's thesis · extended</span></div>
         <div class="meta">2024 · supervised by Prof. Chaouki Aouiti · team of 3</div>
         <p>Given only twelve monthly averages per station and <strong>no geography at all</strong>, what structure does PCA recover from Tunisian climate data?</p>
-        <div class="find">Two components explain <b>98.4%</b> of the variation across 16 stations. The first is mean annual temperature (<b>r = 0.9996</b>). The second is the seasonal swing (<b>r = 0.9893</b>) — and it separates coastal stations from inland ones using a label the model never received. PCA found the Mediterranean without being told where the sea is.</div>
+        <div class="find">Two components explain <b>98.4%</b> of the variation across 16 stations. The first is mean annual temperature (<b>r = 0.9996</b>). The second is the seasonal swing (<b>r = 0.9893</b>), and it separates coastal stations from inland ones using a label the model never received. PCA found the Mediterranean without being told where the sea is.</div>
 
         <div class="viz">
           <div class="vizhead">
-            <div class="mono" style="color:var(--ink-3)">Stations in the F1–F2 plane · hover a point</div>
+            <div class="mono" style="color:var(--ink-3)">Stations in the F1/F2 plane · hover a point</div>
             <div class="legend">
               <span><i class="sw" style="background:#2E7D8C"></i>Coastal</span>
               <span><i class="sw" style="background:#C1703C"></i>Interior</span>
@@ -526,7 +526,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
         <div class="rhead"><h3>Image captioning with visual attention</h3><span class="badge">Deep learning</span></div>
         <div class="meta">2026 · reimplementation and comparison on Flickr8k</div>
         <p>A faithful reimplementation of <em>Show, Attend and Tell</em> (Xu et al., 2015) against a Transformer decoder, plus a visual question answering model.</p>
-        <div class="find">The reimplementation reaches <b>BLEU-4 of 0.2224</b>, slightly above the <b>0.2130</b> reported in the original paper. The Transformer decoder scored lower (0.2017) — expected on 8,000 images, and worth reporting rather than hiding.</div>
+        <div class="find">The reimplementation reaches <b>BLEU-4 of 0.2224</b>, slightly above the <b>0.2130</b> reported in the original paper. The Transformer decoder scored lower (0.2017), expected on 8,000 images, and worth reporting rather than hiding.</div>
         <p><strong>Attention entropy analysis:</strong> attention over nouns (3.7268) is measurably more concentrated than over function words (3.7883), against a uniform ceiling of 3.8918. The mechanism behaves as the paper claims, and the margin is smaller than the usual cherry-picked visualisations suggest.</p>
         <div class="tags"><span class="tag">PyTorch</span><span class="tag">CNN encoders</span><span class="tag">Cross-attention</span><span class="tag">Transformers</span><span class="tag">VQA</span></div>
       </article>
@@ -555,7 +555,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
         <div class="colhead">What happened next</div>
         <div class="stack">
           <div class="slip yes"><span class="k">Engineering degree</span><em>Enrolled in the full-time engineering programme at ESPRIT instead, and funded it myself.</em></div>
-          <div class="slip yes"><span class="k">Talan Tunisie</span><em>“Congrats, you made it!” — AI consultant internship, building agents for Connect'IS.</em></div>
+          <div class="slip yes"><span class="k">Talan Tunisie</span><em>“Congrats, you made it!”: AI consultant internship, building agents for Connect'IS.</em></div>
           <div class="slip yes"><span class="k">Mafrah</span><em>Hired as AI &amp; Backend Developer while still studying, now shipping AI to real users.</em></div>
           <div class="slip yes"><span class="k">WYSE, full circle</span><em>Attended WYSE 1.0 as a participant. Came back to WYSE 2.0 as a speaker.</em></div>
         </div>
@@ -563,7 +563,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
     </div>
 
     <div class="turn rv">
-      The rejection that stung most turned out to be the one that mattered. Not being admitted to the work-study track is the reason I enrolled in the engineering degree and paid for it myself — which is why I now carry <b>two degrees and a job at the same time</b>.
+      The rejection that stung most turned out to be the one that mattered. Not being admitted to the work-study track is the reason I enrolled in the engineering degree and paid for it myself, which is why I now carry <b>two degrees and a job at the same time</b>.
       <br><br>
       In July 2025 I sat in the audience at WYSE as a participant. That room is where the opportunity I am working in today came from. A year later I was back at the same event, <b>on the stage instead of in the seats</b>, telling students about the rejection emails. I did not plan any of it. I just kept going, and the path assembled itself behind me.
     </div>
@@ -597,31 +597,31 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 
     <div class="tl">
       <div class="ev now rv">
-        <div class="when">Sept 2025 — present</div>
+        <div class="when">Sept 2025 to present</div>
         <h3>AI &amp; Backend Developer</h3>
         <div class="where">Mafrah (formerly WebFullContact) · remote</div>
         <p>Designing AI-driven backend services: integrating language models into production systems, building data processing workflows, and maintaining scalable APIs supporting AI functionality.</p>
       </div>
       <div class="ev now rv">
-        <div class="when">Sept 2025 — Oct 2027</div>
+        <div class="when">Sept 2025 to Oct 2027</div>
         <h3>Engineering Degree, Data Science</h3>
-        <div class="where">ESPRIT — Private Higher School of Engineering and Technology, Tunis</div>
+        <div class="where">ESPRIT: Private Higher School of Engineering and Technology, Tunis</div>
         <p>Undergraduate engineering programme, self-funded, taken in parallel with the Master's.</p>
       </div>
       <div class="ev now rv">
-        <div class="when">Sept 2024 — 2026</div>
+        <div class="when">Sept 2024 to 2026</div>
         <h3>Master's in Data Science</h3>
         <div class="where">Faculty of Sciences of Bizerte, University of Carthage</div>
         <p>Ranked first in cohort. Graduation project: JobReady, a privacy-preserving document understanding platform.</p>
       </div>
       <div class="ev rv">
-        <div class="when">Jul — Aug 2025</div>
+        <div class="when">Jul to Aug 2025</div>
         <h3>AI Consultant Intern · Talan Summer Camp</h3>
         <div class="where">Talan Tunisie</div>
-        <p>Selected for the Talan Summer Camp, where I built <strong>Connect'IS</strong> — an AI-driven sales platform — from the ground up with a cross-functional team. I implemented the intelligent agents behind lead prioritisation, forecasting and automated outreach, and contributed to the front end.</p>
+        <p>Selected for the Talan Summer Camp, where I built <strong>Connect'IS</strong>, an AI-driven sales platform, from the ground up with a cross-functional team. I implemented the intelligent agents behind lead prioritisation, forecasting and automated outreach, and contributed to the front end.</p>
       </div>
       <div class="ev rv">
-        <div class="when">2021 — 2024</div>
+        <div class="when">2021 to 2024</div>
         <h3>BSc Mathematics &amp; Computer Science</h3>
         <div class="where">Faculty of Sciences of Bizerte, University of Carthage</div>
         <p>Thesis: principal component analysis of monthly temperatures across Tunisian meteorological stations, supervised by Prof. Chaouki Aouiti.</p>
@@ -668,7 +668,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
       </div>
     </div>
     <p class="mono rv" style="margin-top:24px;color:var(--ink-3)">
-      Certifications — DataCamp: Developing Applications with LangChain · DataCamp: LLM Concepts · AWS Academy Data Engineering · NVIDIA
+      Certifications, DataCamp: Developing Applications with LangChain · DataCamp: LLM Concepts · AWS Academy Data Engineering · NVIDIA
     </p>
   </div>
 </section>
@@ -679,7 +679,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
     <div class="rv">
       <div class="eyebrow">Certifications</div>
       <h2>Credentials</h2>
-      <p class="sub">Formal training that backs the work — generative AI, data engineering and accelerated computing.</p>
+      <p class="sub">Formal training that backs the work: generative AI, data engineering and accelerated computing.</p>
     </div>
 
     <div class="certgrid" id="certgrid">
@@ -712,7 +712,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
       </article>
       <article class="cert rv">
         <span class="issuer" style="--iss:#E88B00">AWS Academy</span>
-        <h3>Data Engineering — Graduate</h3>
+        <h3>Data Engineering: Graduate</h3>
         <div class="when">May 2025</div>
         <div class="topics"><span>Pipelines</span><span>ETL</span><span>Securing data</span></div>
       </article>
@@ -748,7 +748,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
     <div class="rv">
       <div class="eyebrow">Beyond the code</div>
       <h2>Work that isn't technical</h2>
-      <p class="sub">Most of what I build is aimed at people the existing systems overlook — blind users, women's health, graduates trying to get hired.</p>
+      <p class="sub">Most of what I build is aimed at people the existing systems overlook: blind users, women's health, graduates trying to get hired.</p>
     </div>
     <div class="collage rv">
       <figure class="c-a"><img src="assets/team-talan.png" alt="Talan Summer Camp team" loading="lazy"></figure>
@@ -761,19 +761,19 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
       <div class="bcard rv">
         <div class="ico">🎤</div>
         <h3>Speaking for women in STEM</h3>
-        <div class="role">WYSE · Radio Amal · 2025–2026</div>
-        <p>Attended WYSE — Women &amp; Youth in STEM Employment — as a participant, where the opportunity behind my current role came from. Returned to the next edition as a speaker, talking about the road into STEM employment and the rejections along the way. Also spoke on Radio Amal, in Tunisian Arabic, about women in technology.</p>
+        <div class="role">WYSE · Radio Amal · 2025 to 2026</div>
+        <p>Attended WYSE, Women &amp; Youth in STEM Employment, as a participant, where the opportunity behind my current role came from. Returned to the next edition as a speaker, talking about the road into STEM employment and the rejections along the way. Also spoke on Radio Amal, in Tunisian Arabic, about women in technology.</p>
       </div>
       <div class="bcard rv">
         <div class="ico">🏛️</div>
         <h3>Association Youth Clubs</h3>
-        <div class="role">Co-founder · 2019–2021</div>
+        <div class="role">Co-founder · 2019 to 2021</div>
         <p>Co-founded the first youth club in Morneg, Ben Arous, building it from nothing while still at school.</p>
       </div>
       <div class="bcard rv">
         <div class="ico">💡</div>
         <h3>Enactus FSB</h3>
-        <div class="role">Project developer, then sponsorship · 2023–2025</div>
+        <div class="role">Project developer, then sponsorship · 2023 to 2025</div>
         <p>Developed SenseMate, an assistive AI device for visually impaired users that won the Early Stage award at the Enactus National Exposition.</p>
       </div>
       <div class="bcard rv">
@@ -857,9 +857,9 @@ document.querySelectorAll('.rv').forEach(el=>io.observe(el));
   svg.appendChild(mk('line',{class:'ax',x1:M.l,y1:py(0),x2:W-M.r,y2:py(0)}));
   svg.appendChild(mk('line',{class:'ax',x1:px(0),y1:M.t,x2:px(0),y2:H-M.b}));
   let l=mk('text',{class:'axlab',x:W-M.r,y:H-14,'text-anchor':'end'});
-  l.textContent='F1 (67.3%) — mean annual temperature'; svg.appendChild(l);
+  l.textContent='F1 (67.3%): mean annual temperature'; svg.appendChild(l);
   l=mk('text',{class:'axlab',x:-M.t-6,y:14,transform:'rotate(-90)','text-anchor':'end'});
-  l.textContent='F2 (31.1%) — seasonal amplitude'; svg.appendChild(l);
+  l.textContent='F2 (31.1%): seasonal amplitude'; svg.appendChild(l);
 
   D.forEach((d,i)=>{
     const [name,f1,f2,set,mean]=d;
