@@ -530,6 +530,21 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
         <p><strong>Attention entropy analysis:</strong> attention over nouns (3.7268) is measurably more concentrated than over function words (3.7883), against a uniform ceiling of 3.8918. The mechanism behaves as the paper claims, and the margin is smaller than the usual cherry-picked visualisations suggest.</p>
         <div class="tags"><span class="tag">PyTorch</span><span class="tag">CNN encoders</span><span class="tag">Cross-attention</span><span class="tag">Transformers</span><span class="tag">VQA</span></div>
       </article>
+
+      <!-- Place juste apres le captioning : c'est la suite directe de l'analyse
+           d'entropie de l'attention. Le texte dit d'abord ce qui a echoue, parce
+           qu'un lecteur qui ouvre le depot le verra de toute facon. -->
+      <article class="rcard rv">
+        <div class="rhead"><h3>Does attention explain anything?</h3><span class="badge">Independent reproduction</span></div>
+        <div class="meta">2026 · Jain &amp; Wallace, <em>Attention is not Explanation</em>, NAACL 2019 · two corpora, five seeds</div>
+        <p>The paper argues that attention weights are not an explanation of a prediction. It tested BiLSTM, CNN and average-embedding encoders, and <strong>explicitly excluded self-attention</strong>. Seven years later, the encoder everyone actually uses is the one that was never measured. So I reproduced both of its experiments and added that encoder.</p>
+        <div class="find"><b>The reproduction holds.</b> Kendall <b>&tau; = 0.182</b> against the paper's 0.07 to 0.21 for the BiLSTM on gradient importance, and <b>0.204</b> against its 0.06 to 0.20 on leave-one-out. Matching an independent number I was not fitting to is what makes the rest worth reading.</div>
+        <div class="find"><b>The extension that worked.</b> Shuffling the attention weights at random changes the prediction by <b>0.42</b> in total variation on an encoder that never mixes positions, and by <b>0.0143</b> on a Transformer. The ordering is monotone in how much the encoder contextualises: 0.42, 0.27, 0.088, 0.014. On the Transformer an adversarial attention distribution giving the same answer exists for <b>99%</b> of inputs.</div>
+        <p><strong>And the extension that did not.</strong> A second finding, that the Transformer is the one encoder where the choice of importance measure changes the answer, held on 20 Newsgroups and <em>reversed sign</em> on SST. The mechanism I proposed for it was tested by ablating the residual connections; the model collapsed to chance and measured nothing. Both are written up in the repository rather than removed. Five seeds and clean error bars protect against noise within a corpus, not against a conclusion that only exists in one.</p>
+        <p><strong>Three bugs found by the tests, not by a crash.</strong> The worst produced a plausible number pointing the opposite way to the paper: leave-one-out was zeroing the attention mask instead of deleting the token, which measures whether attention stopped looking rather than whether the word was there. It was caught because &tau; came out at 0.83 where the paper reported 0.06.</p>
+        <div class="tags"><span class="tag">PyTorch</span><span class="tag">Reproducibility</span><span class="tag">Interpretability</span><span class="tag">pytest</span><span class="tag">GitHub Actions</span></div>
+        <div class="links"><a href="https://github.com/EyaAzzabi/attention-explanation-lab" target="_blank" rel="noopener">Code, results and the failures →</a></div>
+      </article>
     </div>
   </div>
 </section>
