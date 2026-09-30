@@ -97,6 +97,31 @@ section>.wrap{position:relative;z-index:2}
 .lb img{max-width:100%;max-height:90vh;border-radius:12px;background:#fff;box-shadow:0 20px 60px rgba(0,0,0,.5)}
 .lb .x{position:absolute;top:22px;right:26px;width:42px;height:42px;border-radius:50%;background:var(--sage);color:#fff;border:0;font-size:1.3rem;cursor:pointer;display:grid;place-items:center}
 
+/* project modal */
+.pm{position:fixed;inset:0;z-index:210;background:rgba(24,24,21,.92);display:grid;place-items:center;padding:4vh 4vw;opacity:0;pointer-events:none;transition:opacity .25s;backdrop-filter:blur(4px)}
+.pm.on{opacity:1;pointer-events:auto}
+.pmcard{position:relative;background:var(--cream);width:min(880px,100%);max-height:92vh;overflow-y:auto;border-radius:22px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.pmcard .x{position:absolute;top:16px;right:16px;width:42px;height:42px;border-radius:50%;background:var(--ink);color:var(--cream);border:0;font-size:1.2rem;cursor:pointer;display:grid;place-items:center;z-index:5}
+.pmhead{padding:30px 34px 0}
+.pmhead h3{font-size:1.6rem;font-weight:700;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.pmhead .meta{margin-top:6px}
+.pmvid{margin:20px 34px 0}
+.pmgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:20px 34px 0}
+@media(max-width:640px){.pmgrid{grid-template-columns:1fr}}
+.pmgrid figure{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;cursor:zoom-in}
+.pmgrid img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;transition:transform .3s}
+.pmgrid figure:hover img{transform:scale(1.03)}
+.pmgrid figcaption{padding:10px 14px;font-size:.82rem;color:var(--ink-2)}
+.pmbody-text{padding:22px 34px 8px}
+.pmbody-text p{color:var(--ink-2);font-size:.97rem;margin-top:10px}
+.pmbody-text p:first-child{margin-top:0}
+.pmbody-text strong{color:var(--ink)}
+.pmfoot{padding:18px 34px 32px;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
+.pmtap{cursor:pointer}
+.pmtap .hint{margin-top:14px;font-family:var(--mono);font-size:.76rem;color:var(--sage-d);display:inline-flex;align-items:center;gap:6px}
+.pmtap .hint::after{content:'↗';transition:transform .2s}
+.pmtap:hover .hint::after{transform:translate(2px,-2px)}
+
 /* hero */
 header{position:relative;padding:118px 0 72px;overflow:hidden}
 .hero{position:relative;z-index:2;display:grid;grid-template-columns:1.25fr .75fr;gap:56px;align-items:center}
@@ -359,25 +384,27 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
     </div>
 
     <div class="pgrid">
-      <article class="pcard rv" data-t="agents ml">
+      <article class="pcard rv pmtap" data-t="agents ml" onclick="openPM('jiser')">
         <div class="shot"><img src="assets/jiser-dashboard.jpg" alt="Jiser enterprise dashboard showing a tax notification analysed with contestable amount and deadline" loading="lazy"></div>
         <div class="pbody">
           <h3>Jiser <span class="badge">1st place</span></h3>
           <div class="meta">National "AI &amp; Public Finances" Hackathon · 29 Sep 2026 · team of 4</div>
           <p>جسر ("bridge") connects Tunisian taxpayers and the tax administration to resolve fiscal disputes before the 45-day response deadline. Three complementary AI systems: an exact CDPF rule engine, an XGBoost risk model, and a hybrid RAG over 305 tax articles, with pseudonymisation before any external model call. Beat 30 teams at a hackathon run by ESPRIT and Tunisia's Ministry of Economy &amp; Finances.</p>
           <div class="kpi">AUC 0.84 · 107.3M DT recovered vs. 28.5M DT by age (+276%)</div>
-          <div class="links"><a href="https://github.com/EyaAzzabi/Jiser" target="_blank" rel="noopener">View repository →</a></div>
+          <div class="hint">Watch the demo, see every screen →</div>
+          <div class="links" onclick="event.stopPropagation()"><a href="https://github.com/EyaAzzabi/Jiser" target="_blank" rel="noopener">View repository →</a></div>
         </div>
       </article>
 
-      <article class="pcard rv" data-t="agents ml">
-        <div class="shot"><img src="assets/xray-team.jpg" alt="Team Geeks, the five-person X-Ray team, at GoMyCode's Come Build With AI hackathon" loading="lazy"></div>
+      <article class="pcard rv pmtap" data-t="agents ml" onclick="openPM('xray')">
+        <div class="shot"><img src="assets/xray-dashboard.jpg" alt="X-Ray dashboard overview showing 60 conversations analysed, 28 detected failures and a 100% fix rate" loading="lazy"></div>
         <div class="pbody">
           <h3>X-Ray <span class="badge">3rd place</span></h3>
           <div class="meta">GoMyCode "Come. Build. With AI." Hackathon, with NVIDIA · 27 Sep 2026 · team "Geeks," 5 people</div>
           <p>Most agent failures never throw an error: a tool call "succeeds" with an empty or wrong result, and the agent smooths it over with a confident sentence. X-Ray validates evidence instead of counting exceptions, clustering failures by root cause and ranking them by operational impact. Won the GOMYCODE x NVIDIA Real-World AI Impact Award, 3rd place nationally.</p>
           <div class="kpi">100% precision/recall synthetic · 32% recall on 78 real tau-bench transcripts</div>
-          <div class="links"><a href="https://github.com/EyaAzzabi/SupplyzPro-Smart-Operations-Award" target="_blank" rel="noopener">View repository →</a><a href="https://hackathon.gomycode.com/onboarding/projects?project=65a0a6862cb0e47a4f59ed2af070a125" target="_blank" rel="noopener">Official project page →</a></div>
+          <div class="hint">Watch the demo, see every screen →</div>
+          <div class="links" onclick="event.stopPropagation()"><a href="https://github.com/EyaAzzabi/SupplyzPro-Smart-Operations-Award" target="_blank" rel="noopener">View repository →</a><a href="https://hackathon.gomycode.com/onboarding/projects?project=65a0a6862cb0e47a4f59ed2af070a125" target="_blank" rel="noopener">Official project page →</a></div>
         </div>
       </article>
 
@@ -473,24 +500,25 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
     <div class="rv" style="margin-top:44px">
       <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:5px">Hackathon week, September 2026</h3>
       <p class="sub" style="margin-top:0">Two hackathons, two teams, two podium finishes, four days apart.</p>
+      <p class="mono" style="margin:-4px 0 12px;color:var(--ink-3)">Click any photo for the full story: demo video, every screen, all the numbers.</p>
       <div class="figrow">
-        <figure class="fig">
+        <figure class="fig pmtap" onclick="openPM('jiser')">
           <img src="assets/jiser-team.jpg" alt="The four-person Jiser team" loading="lazy">
           <figcaption>Team Jiser: Eya Azzabi, Sarah Faleh, Eya Rachdi, Eya Idi.</figcaption>
         </figure>
-        <figure class="fig">
+        <figure class="fig pmtap" onclick="openPM('jiser')">
           <img src="assets/jiser-award.jpg" alt="Eya Azzabi holding the 1st place trophy on stage with ESPRIT and Ministry of Economy and Finances officials" loading="lazy">
           <figcaption>1st place: the trophy moment with ESPRIT and Ministry of Finance officials.</figcaption>
         </figure>
-        <figure class="fig">
+        <figure class="fig pmtap" onclick="openPM('jiser')">
           <img src="assets/jiser-ministry.jpg" alt="Jiser's ministerial dashboard: national fiscal contentieux tracked in real time" loading="lazy">
           <figcaption>Jiser's national dashboard: 116.2 MDT tracked, 70% recovery rate.</figcaption>
         </figure>
-        <figure class="fig">
+        <figure class="fig pmtap" onclick="openPM('xray')">
           <img src="assets/xray-team.jpg" alt="Team Geeks at GoMyCode's Come Build With AI hackathon" loading="lazy">
           <figcaption>Team Geeks, building X-Ray at GoMyCode's "Come. Build. With AI."</figcaption>
         </figure>
-        <figure class="fig">
+        <figure class="fig pmtap" onclick="openPM('xray')">
           <img src="assets/gomycode-results.png" alt="Official GoMyCode hackathon results page showing X-Ray in 3rd place nationally" loading="lazy">
           <figcaption>X-Ray: 3rd place, GOMYCODE x NVIDIA Real-World AI Impact Award.</figcaption>
         </figure>
@@ -896,6 +924,13 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
   <img id="lbimg" src="" alt="Certificate">
 </div>
 
+<div class="pm" id="pm" onclick="closePM(event)">
+  <div class="pmcard" onclick="event.stopPropagation()">
+    <button class="x" aria-label="Close" onclick="closePM(event,true)">✕</button>
+    <div id="pmbody"></div>
+  </div>
+</div>
+
 <script>
 const nav=document.getElementById('nav');
 addEventListener('scroll',()=>nav.classList.toggle('stuck',scrollY>20),{passive:true});
@@ -962,7 +997,89 @@ document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
 function openLb(src){const l=document.getElementById('lb');document.getElementById('lbimg').src=src;l.classList.add('on');document.body.style.overflow='hidden'}
 function closeLb(e,force){if(force||e.target.id==='lb'){document.getElementById('lb').classList.remove('on');document.body.style.overflow=''}}
-addEventListener('keydown',e=>{if(e.key==='Escape')closeLb(null,true)});
+addEventListener('keydown',e=>{if(e.key==='Escape'){closeLb(null,true);closePM(null,true)}});
+
+/* project detail modal */
+const PROJECTS={
+  jiser:{
+    title:'Jiser', flag:'🏆', badge:'1st place',
+    meta:'National "AI &amp; Public Finances" Hackathon · ESPRIT &amp; Ministry of Economy and Finances · 25–29 Sep 2026 · team of 4',
+    video:{src:'assets/jiser-demo.mp4', poster:'assets/jiser-dashboard.jpg'},
+    desc:[
+      'جسر ("bridge") links the company that receives a tax-reassessment notice to every level of Tunisia\'s tax administration, from case officer to minister. Companies have 45 days to respond to a redressment notice most cannot parse in time — <b>JISER</b> reads it, checks it against procedure, and drafts the reply.',
+      'Prototype built overnight (25–26 September) with <b>Sarah Faleh</b>, <b>Eya Rachdi</b> and <b>Eya Idi</b>. Ranked <b>2nd of 30</b> teams in the first round, then <b>won 1st place</b> in the national final on the 29th.',
+      'Three complementary AI systems: the exact procedural rules of the tax code (8 checks), an <b>XGBoost + SHAP</b> model scoring each case (<b>AUC 0.84</b>), and an LLM grounded in <b>305 articles</b> through hybrid BM25 + vector retrieval — bilingual, French and Arabic, with text-to-speech. Names and IDs are pseudonymised before any model call; data encrypted at rest.'
+    ],
+    kpi:'AUC 0.84 · +276% recovered working the top 20% of the backlog by model score vs. age · 305 articles retrieved · bilingual FR/AR',
+    images:[
+      {src:'assets/jiser-dashboard.jpg', alt:'Jiser enterprise dashboard', cap:'Enterprise dashboard: a notification analysed, deadline tracked.'},
+      {src:'assets/jiser-assistant.jpg', alt:'Jiser bilingual AI assistant', cap:'The AI assistant, citing CDPF articles by number, in French or Tounsi.'},
+      {src:'assets/jiser-ministry.jpg', alt:'Jiser ministerial dashboard', cap:'Ministerial view: national contentieux tracked in real time.'},
+      {src:'assets/jiser-award.jpg', alt:'Jiser 1st place trophy', cap:'1st place, on stage with ESPRIT and Ministry of Finance officials.'},
+      {src:'assets/jiser-team.jpg', alt:'Team Jiser', cap:'Team Jiser: Eya Azzabi, Sarah Faleh, Eya Rachdi, Eya Idi.'}
+    ],
+    links:[{label:'View repository →', href:'https://github.com/EyaAzzabi/Jiser'}]
+  },
+  xray:{
+    title:'X-Ray', flag:'🥉', badge:'3rd place',
+    meta:'GoMyCode "Come. Build. With AI." Hackathon, with NVIDIA · 27 Sep 2026 · team "Geeks," 5 people',
+    video:{src:'assets/xray-demo.mp4', poster:'assets/xray-dashboard.jpg'},
+    desc:[
+      'Most agent failures never throw an error — a tool call "succeeds" with an empty or wrong result, the agent smooths it over with a confident sentence, and the only trace is a customer getting the wrong answer. <b>X-Ray</b> validates evidence and explains causation instead of counting exceptions.',
+      'Across 60 analysed conversations it surfaced <b>28 detected failures</b>, including <b>3 silent</b> ones that threw no error at all, and clusters them into 7 root-cause families — retry-loop duplicate orders, hallucinated tool results, context collapse and more — each ranked by a Priority Score of frequency × severity × blast radius.',
+      'Every cluster gets an <b>Evidence</b> tab showing the exact turn that failed, a <b>Root Cause</b> tab with contributing factors and impact, and a <b>Remediation</b> tab with concrete, severity-tagged fixes at the tool and agent layer. Team "Geeks," 5 people across AI/Detection, Data, Database, Backend and Frontend, sponsored by NVIDIA.'
+    ],
+    kpi:'100% precision/recall on synthetic cases · 32% recall on 78 real tau-bench transcripts · 100% fix rate once remediated',
+    images:[
+      {src:'assets/xray-dashboard.jpg', alt:'X-Ray dashboard overview', cap:'Dashboard: 60 conversations analysed, 28 failures, 100% fix rate.'},
+      {src:'assets/xray-rootcause.jpg', alt:'X-Ray root cause panel', cap:'Evidence and root-cause analysis for a retry-loop duplicate order.'},
+      {src:'assets/xray-remediation.jpg', alt:'X-Ray remediation tab', cap:'Remediation: severity-tagged fixes at the tool and agent layer.'},
+      {src:'assets/xray-trace.jpg', alt:'X-Ray trace explorer', cap:'Trace explorer: the full tool-call transcript behind each failure.'},
+      {src:'assets/xray-team.jpg', alt:'Team Geeks', cap:'Team Geeks at GoMyCode’s "Come. Build. With AI."'}
+    ],
+    links:[
+      {label:'View repository →', href:'https://github.com/EyaAzzabi/SupplyzPro-Smart-Operations-Award'},
+      {label:'Official project page →', href:'https://hackathon.gomycode.com/onboarding/projects?project=65a0a6862cb0e47a4f59ed2af070a125'}
+    ]
+  }
+};
+
+function openPM(key){
+  const p=PROJECTS[key]; if(!p) return;
+  const html=`
+    <div class="pmhead">
+      <h3>${p.flag} ${p.title} <span class="badge">${p.badge}</span></h3>
+      <div class="meta">${p.meta}</div>
+    </div>
+    <div class="pmvid">
+      <div class="vidwrap" id="pmvw">
+        <video id="pmvid" preload="none" playsinline controls poster="${p.video.poster}">
+          <source src="${p.video.src}" type="video/mp4">
+        </video>
+        <div class="poster" style="background-image:url(${p.video.poster})" onclick="const v=document.getElementById('pmvid');document.getElementById('pmvw').classList.add('playing');v.play()">
+          <div class="play"><svg width="22" height="24" viewBox="0 0 22 24" fill="#fff"><path d="M0 0l22 12L0 24z"/></svg></div>
+        </div>
+      </div>
+    </div>
+    <div class="pmgrid">
+      ${p.images.map(im=>`<figure onclick="openLb('${im.src}')"><img src="${im.src}" alt="${im.alt}" loading="lazy"><figcaption>${im.cap}</figcaption></figure>`).join('')}
+    </div>
+    <div class="pmbody-text">${p.desc.map(d=>`<p>${d}</p>`).join('')}</div>
+    <div class="pmfoot">
+      <div class="kpi" style="margin-top:0">${p.kpi}</div>
+      <div class="links">${p.links.map(l=>`<a href="${l.href}" target="_blank" rel="noopener">${l.label}</a>`).join('')}</div>
+    </div>`;
+  document.getElementById('pmbody').innerHTML=html;
+  document.getElementById('pm').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+function closePM(e,force){
+  if(force||(e&&e.target&&e.target.id==='pm')){
+    const v=document.getElementById('pmvid'); if(v) v.pause();
+    document.getElementById('pm').classList.remove('on');
+    document.body.style.overflow='';
+  }
+}
 
 const cc=document.getElementById('certcount');
 if(cc)cc.textContent=document.querySelectorAll('#certgrid .cert').length+' selected certifications · NVIDIA, DataCamp, AWS';
