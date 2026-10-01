@@ -519,7 +519,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
           <figcaption>Team Geeks, building X-Ray at GoMyCode's "Come. Build. With AI."</figcaption>
         </figure>
         <figure class="fig pmtap" onclick="openPM('xray')">
-          <img src="assets/gomycode-results.png" alt="Official GoMyCode hackathon results page showing X-Ray in 3rd place nationally" loading="lazy">
+          <img src="assets/xray-award-card.png" alt="Official GOMYCODE award card: X-Ray, 3rd place, team Geeks" loading="lazy">
           <figcaption>X-Ray: 3rd place, GOMYCODE x NVIDIA Real-World AI Impact Award.</figcaption>
         </figure>
       </div>
@@ -790,6 +790,14 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 
     <div class="certgrid" id="certgrid">
       <article class="cert rv">
+        <span class="issuer" style="--iss:#2E1A6B">GOMYCODE</span>
+        <h3>Come. Build. With AI. Hackathon, 3rd place</h3>
+        <div class="when">September 2026</div>
+        <div class="topics"><span>GOMYCODE x NVIDIA Real-World AI Impact Award</span></div>
+        <a class="verify" href="https://hackathon.gomycode.com/onboarding/projects?project=65a0a6862cb0e47a4f59ed2af070a125" target="_blank" rel="noopener">Verify certificate →</a>
+        <div class="thumb" onclick="openLb('assets/xray-certificate.png')"><img src="assets/xray-certificate.png" alt="GOMYCODE certificate of participation, Come. Build. With AI. hackathon, team Geeks, project X-Ray" loading="lazy"></div>
+      </article>
+      <article class="cert rv">
         <span class="issuer" style="--iss:#5E9400">NVIDIA</span>
         <h3>Applications of AI for Anomaly Detection</h3>
         <div class="when">April 2026</div>
@@ -1029,7 +1037,7 @@ const PROJECTS={
     desc:[
       'Most agent failures never throw an error: a tool call "succeeds" with an empty or wrong result, the agent smooths it over with a confident sentence, and the only trace is a customer getting the wrong answer. <b>X-Ray</b> validates evidence and explains causation instead of counting exceptions.',
       'Across 60 analysed conversations it surfaced <b>28 detected failures</b>, including <b>3 silent</b> ones that threw no error at all, and clusters them into 7 root-cause families (retry-loop duplicate orders, hallucinated tool results, context collapse and more), each ranked by a Priority Score of frequency × severity × blast radius.',
-      'Every cluster gets an <b>Evidence</b> tab showing the exact turn that failed, a <b>Root Cause</b> tab with contributing factors and impact, and a <b>Remediation</b> tab with concrete, severity-tagged fixes at the tool and agent layer. Team "Geeks," 5 people across AI/Detection, Data, Database, Backend and Frontend, sponsored by NVIDIA.'
+      'Every cluster gets an <b>Evidence</b> tab showing the exact turn that failed, a <b>Root Cause</b> tab with contributing factors and impact, and a <b>Remediation</b> tab with concrete, severity-tagged fixes at the tool and agent layer. Team "Geeks": Iyed Zarrougui, Sarra Bouazzi, Chayma Sebri, Eya Azzabi and Meriem Mejri, across AI/Detection, Data, Database, Backend and Frontend, sponsored by NVIDIA.'
     ],
     kpi:'100% precision/recall on synthetic cases · 32% recall on 78 real tau-bench transcripts · 100% fix rate once remediated',
     images:[
@@ -1037,6 +1045,8 @@ const PROJECTS={
       {src:'assets/xray-rootcause.jpg', alt:'X-Ray root cause panel', cap:'Evidence and root-cause analysis for a retry-loop duplicate order.'},
       {src:'assets/xray-remediation.jpg', alt:'X-Ray remediation tab', cap:'Remediation: severity-tagged fixes at the tool and agent layer.'},
       {src:'assets/xray-trace.jpg', alt:'X-Ray trace explorer', cap:'Trace explorer: the full tool-call transcript behind each failure.'},
+      {src:'assets/xray-award-card.png', alt:'Official GOMYCODE award card for X-Ray', cap:'Official result: 3rd place, GOMYCODE x NVIDIA Real-World AI Impact Award.'},
+      {src:'assets/xray-certificate.png', alt:'GOMYCODE certificate of participation for Eya Azzabi, team Geeks, project X-Ray', cap:'Certificate of participation, GOMYCODE "Come. Build. With AI."'},
       {src:'assets/xray-team.jpg', alt:'Team Geeks', cap:'Team Geeks at GoMyCode’s "Come. Build. With AI."'}
     ],
     links:[
@@ -1084,7 +1094,7 @@ function closePM(e,force){
 }
 
 const cc=document.getElementById('certcount');
-if(cc)cc.textContent=document.querySelectorAll('#certgrid .cert').length+' selected certifications · NVIDIA, DataCamp, AWS';
+if(cc)cc.textContent=document.querySelectorAll('#certgrid .cert').length+' selected certifications · GOMYCODE, NVIDIA, DataCamp, AWS';
 
 document.querySelectorAll('.fbtn').forEach(b=>b.onclick=()=>{
   document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('on'));
